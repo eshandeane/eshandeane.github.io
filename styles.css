@@ -61,7 +61,7 @@ section[id] { scroll-margin-top: 76px; }
 /* ---------- Typography ---------- */
 h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -0.022em; color: var(--ink); font-weight: 400; margin: 0; }
 h1, h2 { font-family: var(--serif); }
-h1 { font-size: clamp(2.5rem, 6vw, 3.9rem); }
+h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
 h2 { font-size: clamp(1.8rem, 3.8vw, 2.5rem); }
 h3 { font-size: 1.2rem; }
 p { margin: 0 0 1.1em; color: var(--ink-soft); }
@@ -130,7 +130,7 @@ strong { color: var(--ink); font-weight: 620; }
 }
 
 /* ---------- Hero ---------- */
-.hero { padding: 96px 0 72px; }
+.hero { padding: 56px 0 40px; }
 .hero-inner {
   display: flex;
   flex-direction: column-reverse;
@@ -154,7 +154,7 @@ strong { color: var(--ink); font-weight: 620; }
   line-height: 1.6;
   color: var(--ink-soft);
   max-width: 52ch;
-  margin: 0 auto 36px;
+  margin: 0 auto 24px;
 }
 .hero .meta-row {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
