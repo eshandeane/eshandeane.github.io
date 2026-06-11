@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarded 29 Distributors by Hand - Eshan Deane</title>
+  <meta name="description" content="Onboarded 29 distributors directly and mentored an analyst who onboarded 5 more - $72.7K/month MRR across 34 accounts at 94% retention, across every major foodservice ERP." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#impact">Needle Movers</a>
+        <a href="index.html#ai">AI in Production</a>
+        <a href="index.html#agents">Agent Workforce</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="index.html#impact" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study 01 · Onboarding &amp; operations</p>
+      <h1>Onboarded 29 distributors by hand - then mentored an analyst who onboarded 5 more</h1>
+      <p class="sub">Every distributor runs a different ERP, has different business logic, and engages at its own pace. I owned onboarding end-to-end across two roles and 2.5 years, holding the full context between US partners and engineering with zero handoff latency.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num">$72.7K<span class="from" style="font-size:1rem">/mo</span></span><span class="lbl">MRR generated across 34 accounts</span></div>
+        <div class="r"><span class="num">94%</span><span class="lbl">retention (32 of 34 accounts)</span></div>
+        <div class="r"><span class="num">7</span><span class="lbl">ERP families integrated, from AS/400 to custom SFTP</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>Context</h2>
+      <p>Cut+Dry sells a digital commerce platform to foodservice distributors - companies that supply restaurants, hotels, and cafeterias. The distributor partner SaaS is Cut+Dry's largest revenue line, so every contracted distributor that isn't live yet is revenue sitting in a queue. The faster you onboard them, the faster the company makes money.</p>
+      <p>The problem: onboarding is slow. These are operationally complex, often family-owned businesses running legacy ERP systems that have been in place for decades. Onboarding means connecting their ERP, mapping an entire product catalog to a universal taxonomy, configuring pricing logic, training their sales team, migrating customers to digital ordering, and supporting them through launch. No two are the same. I owned this end-to-end - onboarding 29 accounts directly and mentoring an analyst (Emina Smajlovic) who onboarded 5 more.</p>
+
+      <h2>Why it was hard</h2>
+      <h3>Every distributor runs a different ERP - and none are simple</h3>
+      <p>Hillcrest Foods ran an AS/400 where loading customer pricing required a custom maintenance program built by an external consultant. Maplevale Farms rejected orders because files arrived as CSV instead of TXT - a single format mismatch that blocked go-live. A&amp;B Distributors had AS/400 customer pricing that kept overwriting edits on the platform, so I made the call to stop fetching their price files entirely and shift pricing control to Cut+Dry.</p>
+      <p>There was no "standard integration." Each ERP had different data formats, sync methods, and quirks. I learned each one on calls with the distributor's IT team during their business hours - my evenings and nights in Sri Lanka - then translated what I'd learned into engineering requirements during my daytime. Every clarification that fell between those windows cost ~24 hours.</p>
+
+      <h3>Business logic lives in people's heads, not documentation</h3>
+      <p>Distributors don't have written specs for how pricing, routing, and customer segmentation work. Rules like "customer X gets 5% off category Y but only on case quantities, and only if they're not a cash-and-carry account" live in the minds of operations managers who've done it the same way for 20 years. My job was to extract that logic on nightly calls, translate it into product requirements, and align engineering during the day - bridging stakeholders who didn't fully grasp the technical implications of their own rules.</p>
+
+      <h3>I built features to unblock launches</h3>
+      <p>Some accounts couldn't go live without product changes. At Indianhead, customers were deleting their own delivery days and breaking routing; I shipped a production change removing those fields from customer-editable settings - a feature that applied to every account. At Local Foods FL, I built dual-source inventory logic for seafood items that became reusable for other distributors. The pattern was consistent: onboarding a specific account surfaced a gap, I scoped the fix as a platform feature rather than a one-off patch, and it accelerated the next 3–4 accounts that hit the same issue.</p>
+
+      <blockquote>
+        <p>"Most distributors weren't angry about bugs - they were angry about silence."</p>
+        <cite>- The retention lesson across 34 accounts</cite>
+      </blockquote>
+
+      <h2>The schedule</h2>
+      <p>Every night I joined calls with US distributors - kickoffs, data-and-logic sessions, escalation reviews, go-live check-ins - across 10–15 accounts at different stages simultaneously. During the day I worked with engineering: translating calls into requirements, scoping fixes, prioritizing feature work. This wasn't a relay. I was the only person holding the full context - what the distributor needed, what engineering was building, where the gaps were, which accounts were at risk. Single-threaded ownership meant faster decisions, but every escalation came to me regardless of the hour.</p>
+
+      <h2>Mentoring Emina</h2>
+      <p>By January 2025 I'd onboarded enough accounts to know the patterns cold. Rather than running every account myself, I brought on Emina Smajlovic as a junior analyst and trained her on the full lifecycle - kickoff structure, data-and-logic facilitation, ERP coordination, escalation management. I sat in on her first calls and reviewed her data capture before it reached engineering. Over nine months she onboarded 5 accounts generating $14.3K/month in MRR, and by October 2025 she was running accounts independently.</p>
+
+      <h2>Highlight: What Chefs Want - $1B+ distributor, 4 regional rollouts</h2>
+      <p>The largest and most complex account I onboarded: a $1B+ foodservice distributor with 1,000+ employees across 4 regional locations sharing a single ERP. I onboarded Denver first, then used it as the template for South, Central, and South East - each rollout faster than the last as catalog mappings and integration patterns carried over.</p>
+      <div class="callout">
+        <div class="k">What the onboarding enabled</div>
+        <p>70%+ customer migration to digital ordering, $5.32M in new online revenue (14% growth), and ~$800K/year in cost savings from automating 400–450 weekly phone orders. $14.4K/month in MRR from a single relationship across 4 locations.</p>
+      </div>
+
+      <h2>Results</h2>
+      <table class="dtable">
+        <thead><tr><th>Metric</th><th>PM era</th><th>Senior PM era</th><th>Combined</th></tr></thead>
+        <tbody>
+          <tr><td>Accounts</td><td>15</td><td>19</td><td>34</td></tr>
+          <tr><td>MRR generated</td><td>$32.5K/mo</td><td>$40.2K/mo</td><td>$72.7K/mo</td></tr>
+          <tr><td>Retention</td><td>93% (14/15)</td><td>95% (18/19)</td><td>94% (32/34)</td></tr>
+        </tbody>
+      </table>
+      <p>ERP families handled: AS/400, Eagle, FreshByte, Produce Pro, QuickBooks, Fishbowl, and SFTP-based custom systems.</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>Every distributor thinks they're unique - and they're half right.</strong> The business rules are genuinely different, but the integration patterns repeat. The 20% that's truly unique is where you earn the relationship.</li>
+        <li><strong>Onboarding surfaces the best product insights.</strong> The features I built to unblock individual launches became platform capabilities. The PM who does the onboarding sees gaps the PM who only reads tickets never will.</li>
+        <li><strong>Bugs don't kill deals. Silence kills deals.</strong> The accounts that churned weren't the ones with the worst bugs - they were the ones who felt unheard. Structured updates with specific timelines kept retention above 94%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="case-platform.html">Cut time-to-revenue 40% with an AI-enhanced platform →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="index.html#impact">Needle Movers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

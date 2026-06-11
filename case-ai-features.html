@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 AI Features Shipped in the Platform - Eshan Deane</title>
+  <meta name="description" content="Five production AI features - RAG Q&A, meeting matching, spec generation, Jira ticket creation, weekly update drafting - covered by an LLM-as-Judge eval pipeline in Langfuse." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#impact">Needle Movers</a>
+        <a href="index.html#ai">AI in Production</a>
+        <a href="index.html#agents">Agent Workforce</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="index.html#impact" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study 04 · AI in the product</p>
+      <h1>5 AI features shipped into the onboarding platform</h1>
+      <p class="sub">Not just using AI to build faster - building AI into the product for end users. Every feature came from a specific problem I observed during 34 manual onboardings, and every AI output keeps a human control: accept, edit, or dismiss.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num">5–7 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst</span></div>
+        <div class="r"><span class="num">~4 hrs</span><span class="lbl">saved per new distributor on spec + tickets</span></div>
+        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by the eval pipeline → citation fix prioritized</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>The throughline</h2>
+      <p>The time lost searching transcripts, the hours writing specs and tickets, the context that died in meeting recordings - these shaped what I built and why. All five features are covered by an LLM-as-Judge eval pipeline in Langfuse, with Langfuse telemetry for production monitoring.</p>
+
+      <h2>1 · Ask FDE - RAG-powered workspace Q&amp;A</h2>
+      <p>Onboarding analysts run 5–6 back-to-back calls daily across 10–17 concurrent accounts. Between calls, answering "what's blocking this account right now?" used to mean switching between Circleback transcripts, the spec document, and Jira. Ask FDE is a conversational assistant embedded in each workspace, grounded in three sources - the specification, uploaded meeting transcripts, and synced Jira tickets - using a per-workspace semantic search store. Every answer carries source citations so users see exactly which meeting, spec section, or ticket it came from, and it degrades gracefully to spec-only context before meetings are uploaded.</p>
+
+      <h2>2 · Meeting-to-account matching</h2>
+      <p>Every call generates decisions and commitments that die in recordings unless someone extracts and connects them. A webhook integration ingests recordings from Circleback and Fathom, and an AI step identifies the correct distributor account by analyzing attendees, title, and notes - no manual assignment. Approved meetings are indexed into per-workspace search stores, forming the data backbone for Ask FDE and the Control Tower. (287 historical recordings were sitting unmatched before this shipped.)</p>
+
+      <h2>3 · Spec generation</h2>
+      <p>Once questionnaire responses are collected across four intake stages, someone has to read all of it and write a structured specification across seven categories - the source of truth for the entire integration. One-click generation reads all completed responses and produces a fully editable spec, run in parallel per section. Delta reviews and corrects before it goes to the distributor for sign-off, and the signed spec feeds ticket generation downstream.</p>
+
+      <h2>4 · Jira ticket generation</h2>
+      <p>After sign-off, a three-phase AI pipeline parses the spec into categories, generates tickets per category using domain-specific prompts, and persists them as reviewable drafts. Managers approve, edit, or reject individual tickets before a batch export to Jira with parallel execution and relevant data files attached - replacing the manual creation of 30–80 tickets per account.</p>
+
+      <h2>5 · Weekly update drafting - built and shipped solo, end-to-end</h2>
+      <p>This one I owned entirely: spec, prompt design, evals, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
+
+      <h2>The eval discipline</h2>
+      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap.</p>
+
+      <div class="callout">
+        <div class="k">Why this matters for an AI PM role</div>
+        <p>An average grounding number looks like a model problem. The eval pipeline turned it into a prompt problem with a known cause and a cheap fix. That's the difference between speccing AI features and owning them.</p>
+      </div>
+
+      <h2>Time returned per analyst</h2>
+      <table class="dtable">
+        <thead><tr><th>Cadence</th><th>Feature</th><th>Saved</th></tr></thead>
+        <tbody>
+          <tr><td>Daily</td><td>Ask FDE</td><td>~20–30 min/day</td></tr>
+          <tr><td>Weekly</td><td>Meeting matching</td><td>~75 min/week</td></tr>
+          <tr><td>Weekly</td><td>Weekly update draft</td><td>~50–55 min/week</td></tr>
+          <tr><td>Per distributor</td><td>Spec generation</td><td>~2 hrs each</td></tr>
+          <tr><td>Per distributor</td><td>Jira ticket generation</td><td>~2 hrs each</td></tr>
+        </tbody>
+      </table>
+      <p>Recurring: 5–7 hours/week per analyst. Per new distributor: ~4 hours on spec + tickets. Time that was previously absorbed into evenings and weekends.</p>
+
+      <h2>Stack</h2>
+      <div class="stack-list">
+        <span class="chip-plain">RAG / semantic search</span>
+        <span class="chip-plain">LLM-as-Judge evals</span>
+        <span class="chip-plain">Langfuse</span>
+        <span class="chip-plain">Prompt orchestration</span>
+        <span class="chip-plain">Circleback / Fathom webhooks</span>
+        <span class="chip-plain">Jira API</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="case-track.html">Built Track from 0 to 1 →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="index.html#impact">Needle Movers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

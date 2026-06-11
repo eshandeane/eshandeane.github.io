@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cut Time-to-Revenue 40% with an AI-Enhanced Platform - Eshan Deane</title>
+  <meta name="description" content="Vibe-coded a prototype to earn the mandate, then built an AI-enhanced onboarding platform from scratch with one engineer - cutting time-to-revenue from 189 to 113 days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#impact">Needle Movers</a>
+        <a href="index.html#ai">AI in Production</a>
+        <a href="index.html#agents">Agent Workforce</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="index.html#impact" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study 02 · 0-to-1 AI platform</p>
+      <h1>Cut distributor time-to-revenue 40% with an AI-enhanced platform</h1>
+      <p class="sub">After onboarding 29 distributors by hand, I saw the same bottlenecks on every account. I vibe-coded a working prototype on my own initiative to earn the mandate, then built the real platform from scratch with one engineer - writing production code in Claude Code.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num"><span class="from">189 →</span> 113 days</span><span class="lbl">time-to-revenue, ~40% faster</span></div>
+        <div class="r"><span class="num"><span class="from">100 →</span> 8.5 days</span><span class="lbl">intake median by Q2 2026, 11x faster</span></div>
+        <div class="r"><span class="num">$40.2K<span class="from" style="font-size:1rem">/mo</span></span><span class="lbl">new MRR across the role</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>The problem</h2>
+      <p>Before the platform, onboarding ran across Google Sheets, Monday.com, Jira, Slack, and email with no single system. Business-logic capture happened through ad-hoc calls and Google Forms. Data mapping was manual. Jira tickets were created by hand. Onboarding took 152–191 days depending on account size, and the company needed to scale from 30 onboardings/quarter to 70 parallel onboardings to reach 300 distributors within a year.</p>
+      <p>The bottlenecks were specific:</p>
+      <ul>
+        <li>100+ days for intake (business logic + data mapping) before engineering could even start</li>
+        <li>~120 comments per Jira epic on average, with engineers putting tickets on hold waiting for answers</li>
+        <li>Zero visibility between intake and integration - a "dead zone" where accounts stalled without anyone noticing</li>
+      </ul>
+
+      <h2>Earning the mandate</h2>
+      <p>In August 2025, when AI developer tools were just taking off, I vibe-coded a working prototype of an onboarding tool on my own initiative - not to build the real thing, but to show leadership how fast building had become and to pitch the idea. It worked. The prototype earned me the mandate to lead product for a new onboarding platform, moving me from hands-on onboarding into product leadership.</p>
+
+      <h2>What I built</h2>
+      <p>Every pattern, bottleneck, and workaround I'd seen across 34 manual onboardings shaped the platform's design. I built it from scratch with one engineer (Gayanga Kuruppu), using Claude Code for velocity.</p>
+
+      <h3>1 · Structured intake to replace ad-hoc data collection</h3>
+      <p>A purpose-built questionnaire system with branching logic by ERP type, screenshots and visual examples on UI-specific questions, and "why we need this" context on every question to reduce confusion. I separated pay from business-logic intake after feedback that pay work continues well after ordering begins.</p>
+
+      <h3>2 · AI-generated specifications</h3>
+      <p>Once a distributor completes questionnaires, the system generates a structured specification as the shared source of truth, replacing manual spec writing. Delta reviews; the distributor signs off. Eval data: 100% completeness, 96% accuracy.</p>
+
+      <h3>3 · AI-generated Jira tickets</h3>
+      <p>Instead of manually creating 30–80 tickets per account, a three-phase AI pipeline reads the signed-off spec and generates draft tickets by category for review and approval before creation.</p>
+
+      <h3>4 · Integration visibility</h3>
+      <p>An integration progress tracker showing ticket completion by category, a launch timeline flowchart, and progress bars - killing the dead zone where accounts stalled silently.</p>
+
+      <h3>5 · Control Tower with AI-generated updates</h3>
+      <p>AI-generated "Story So Far" narratives, game plans, and launch-status classifications replaced ~25 min/account/week of manual synthesis across 43 accounts, triggered automatically from meeting approvals, at 98% grounding accuracy.</p>
+
+      <div class="callout">
+        <div class="k">Velocity</div>
+        <p>Shipped 33 features and 4 fixes (39 PRs) in 5 months - about 2 features/week - writing production code with Claude Code as a builder PM alongside one engineer.</p>
+      </div>
+
+      <h2>Results</h2>
+      <table class="dtable">
+        <thead><tr><th>Metric</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Time-to-revenue</td><td>189 days</td><td>113 days (~40% faster)</td></tr>
+          <tr><td>Requirements / data capture (at launch)</td><td>100 days</td><td>26 days (~4x faster)</td></tr>
+          <tr><td>Intake median (Q2 2026, 32 accounts live)</td><td>100 days</td><td>8.5 days (11x faster)</td></tr>
+          <tr><td>New MRR (role)</td><td>-</td><td>$40.2K/month across 19 accounts</td></tr>
+        </tbody>
+      </table>
+      <p>An analysis of 2,520 Jira comments across 703 tickets in 15 epics showed 23% of all comments were clarification requests. The account with the best spec quality also had the lowest clarification rate (11% vs. 23% average) - direct evidence that better intake reduces integration delays.</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>Intake quality is the single biggest lever.</strong> Better specs reduce clarifications, and every clarification avoided saves ~24 hours of round-trip latency.</li>
+        <li><strong>You can't compress what you can't see.</strong> Before the analytics dashboard and control tower, nobody knew an account was stalling until someone asked. Now at-risk accounts are flagged automatically.</li>
+        <li><strong>Introduce AI only where it removes friction without removing control.</strong> Visibility came before automation, and every AI step kept a human review gate.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="case-pipeline.html">85% lift in weekly code throughput with a 5-agent pipeline →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="index.html#impact">Needle Movers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

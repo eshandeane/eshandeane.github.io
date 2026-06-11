@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Built Track from 0 to 1 - Eshan Deane</title>
+  <meta name="description" content="A 0-to-1 last-mile delivery product for foodservice distributors. Validated demand before building, killed the live map no one used, pivoted to ETA notifications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#impact">Needle Movers</a>
+        <a href="index.html#ai">AI in Production</a>
+        <a href="index.html#agents">Agent Workforce</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="index.html#impact" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study 05 · 0-to-1 · Last-mile logistics</p>
+      <h1>Built Track from 0 to 1 - a last-mile delivery product for foodservice</h1>
+      <p class="sub">Validated demand by integrating a third-party tool before building anything, then built a purpose-built product for the domain's real complexity: midnight departures, 30–40 stops per driver, and catch-weight products.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num">4</span><span class="lbl">distributor fleets launched</span></div>
+        <div class="r"><span class="num">8,000+</span><span class="lbl">restaurants served</span></div>
+        <div class="r"><span class="num">2,500</span><span class="lbl">restaurant enterprise rollout at Hillcrest</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>How it started</h2>
+      <p>In 2020, COVID shut down restaurants but opened a new channel: direct-to-consumer food delivery. Cut+Dry pivoted to help distributors ship directly to consumers - a new fulfillment model that needed routing, tracking, and delivery notifications. Instead of building from scratch, I integrated Routific, a third-party routing platform, to test whether the value prop held before committing engineering to it.</p>
+      <p>It did. Distributors wanted delivery visibility; customers wanted ETAs. But Routific was built for generic delivery, not foodservice - it didn't handle midnight truck departures, back-haul stops, catch-weight products, or multi-stop routes with 30–40 drops, and the licensing cost didn't scale. So I scoped and built Track, carrying over the validated value prop while building for the domain's actual complexity.</p>
+
+      <div class="callout">
+        <div class="k">The pivot that shaped the product</div>
+        <p>We first built a live map for restaurants to watch their truck - the Uber Eats model applied to foodservice. It flopped. Restaurant managers aren't consumers tracking a burger from the couch; they're running a kitchen. I scrapped the live-tracking screen and reframed the entire product around ETA notifications: tell the restaurant when to expect the truck so they can have someone at the dock, then get out of the way.</p>
+      </div>
+
+      <h2>What I built</h2>
+      <h3>Driver app (iOS + Android)</h3>
+      <p>Drove releases v2.0.3 through v2.0.7, each informed by real driver feedback: a "select next stop" override for experienced drivers who know traffic patterns, delivery photo capture with gallery support, at-a-glance stop status icons, odometer and break/lunch logging for compliance, and a downloadable PDF delivery log.</p>
+
+      <h3>Distributor monitoring portal</h3>
+      <p>A web dashboard showing all active routes with real-time driver positions, per-stop shareable links operations could send to customers, and route file ingestion from distributor ERP systems via daily CSV/file drops.</p>
+
+      <h3>Customer notifications</h3>
+      <p>Automated SMS and email notifications with ETA windows, tuned against actual route data - one distributor's initial 2-hour windows were too vague to be useful, so we tightened them.</p>
+
+      <h2>How I launched it</h2>
+      <p><strong>Golden Gate Meat (first customer)</strong> was the pilot - configuring routes, onboarding drivers, and launching branded customer notifications. The main challenge was driver adoption: drivers are delivering 500-pound pallets of meat at 4 AM, so the app had to be dead simple. <strong>Pacific Produce</strong> surfaced data-quality and timezone edge cases requiring coordinated fixes across the portal, driver app, and customer-facing surfaces.</p>
+      <p><strong>Hillcrest Foodservice</strong> was the most complex deployment: 2,500 active restaurants, 6-day-a-week delivery, trucks leaving at midnight. I negotiated route-file timing using an order-completeness matrix (6 AM = 95% completeness on weekdays), rolled out from 3 test drivers to the full fleet, and handled edge cases like back-haul stops and ~60 invalid addresses. During rollout I personally dispatched routes and monitored stops - you can't project-manage a midnight truck departure from a Jira board.</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>"Where is my truck?" was the wrong value prop.</strong> The right one was "tell me when to be at the dock." That single reframe shaped Track's trajectory - the difference between building what sounds right and what works for the user's context.</li>
+        <li><strong>Driver adoption is the real product challenge.</strong> The portal and notifications sell Track, but it lives or dies on whether a driver at 3 AM in a cold truck actually uses the app. Every UX decision passed through that lens.</li>
+        <li><strong>Enterprise deployment requires you on the ground.</strong> Being hands-on during the critical first weeks built trust and surfaced issues that would have taken weeks to trickle up through support.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="case-payments.html">Payment gateway at Sysco LABS (CAKE POS) →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="index.html#impact">Needle Movers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
