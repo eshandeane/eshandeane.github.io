@@ -133,28 +133,29 @@ strong { color: var(--ink); font-weight: 620; }
 .hero { padding: 56px 0 40px; }
 .hero-inner {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  gap: 36px;
+  text-align: left;
+  gap: 64px;
+  justify-content: space-between;
 }
-.hero-text { flex: 1; display: flex; flex-direction: column; align-items: center; }
-.hero-photo { flex-shrink: 0; }
+.hero-text { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.hero-photo { flex-shrink: 0; order: 2; }
 .hero-photo img {
-  width: 168px; height: 168px; object-fit: cover;
+  width: 200px; height: 200px; object-fit: cover;
   border-radius: 50%;
   border: 3px solid #fff;
   box-shadow: 0 10px 30px -14px rgba(15, 20, 32, 0.3);
 }
 .hero .name { font-size: 0.78rem; }
-.hero h1 { max-width: 19ch; margin: 0 auto 26px; }
+.hero h1 { max-width: 19ch; margin: 0 0 20px; }
 .hero .accent-text { color: var(--accent); }
 .hero .positioning {
   font-size: 1.25rem;
   line-height: 1.6;
   color: var(--ink-soft);
   max-width: 52ch;
-  margin: 0 auto 24px;
+  margin: 0 0 24px;
 }
 .hero .meta-row {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
@@ -193,7 +194,7 @@ strong { color: var(--ink); font-weight: 620; }
   border: 1px solid var(--accent-line);
 }
 .btn-ghost:hover { background: var(--accent-tint); color: var(--accent-hover); border-color: var(--accent-line); }
-.btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.btn-row { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; }
 
 /* ---------- Stat band (bento tiles) ---------- */
 .statband { padding: 8px 0 32px; }
@@ -511,7 +512,12 @@ html.js .reveal.in-view {
   .result-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .bg-row { grid-template-columns: 1fr; gap: 6px; }
-  .hero { padding: 64px 0 56px; }
+  .hero { padding: 48px 0 40px; }
+  .hero-inner { flex-direction: column-reverse; text-align: center; gap: 28px; justify-content: center; }
+  .hero-text { align-items: center; }
+  .hero .positioning { margin: 0 auto 24px; }
+  .btn-row { justify-content: center; }
+  .hero-photo { order: 0; }
   .hero-photo img { width: 140px; height: 140px; }
   .case-card { padding: 30px 26px; }
   .ai-item { padding: 26px 24px; }
