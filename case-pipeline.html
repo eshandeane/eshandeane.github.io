@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>85% Lift in Weekly Code Throughput with a 5-Agent Delivery Pipeline - Eshan Deane</title>
-  <meta name="description" content="Built a 5-agent delivery pipeline (discovery, prototyping, PRD, testing, orchestration) that lifted weekly code throughput 85%, with PM judgment held at the review gate." />
+  <title>5 PM Agents Around Ralph: A Review-Gated Delivery Pipeline - Eshan Deane</title>
+  <meta name="description" content="Built 5 PM agents (discovery, prototyping, PRD, acceptance testing, orchestration) around Ralph, an open-source autonomous coding agent. PM judgment held at the review gate; agents handle execution." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -29,17 +29,17 @@
     <div class="container">
       <a href="index.html#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 03 · Agentic delivery</p>
-      <h1>85% lift in weekly code throughput with a 5-agent delivery pipeline</h1>
-      <p class="sub">Delivery was constrained by handoffs and context loss between phases. I built a pipeline of 5 AI agents - discovery, prototyping, PRD, testing, orchestration - that compresses the classic B2B SaaS loop into a fast, review-gated workflow. PM judgment stays at the review gate; the agents handle execution.</p>
+      <h1>Built 5 PM agents around Ralph so my time goes to discovery and design</h1>
+      <p class="sub">Delivery used to consume the PM hours I'd rather spend on discovery and design. I built 5 agents (discovery, prototyping, PRD, acceptance testing, orchestration) around Ralph, an open-source autonomous coding agent that handles implementation. The pipeline runs review-gated: agents do the artifact work; I make the product calls.</p>
     </div>
   </section>
 
   <div class="result-band">
     <div class="container">
       <div class="result-grid">
-        <div class="r"><span class="num">+85%</span><span class="lbl">weekly code throughput (1,281 → 2,374 lines/week)</span></div>
-        <div class="r"><span class="num">+68%</span><span class="lbl">average PR size (704 → 1,181 lines)</span></div>
-        <div class="r"><span class="num">27 PRs</span><span class="lbl">25 features shipped in 13 weeks</span></div>
+        <div class="r"><span class="num">5 agents</span><span class="lbl">discovery, prototyping, PRD, acceptance testing, orchestration, built around Ralph for implementation</span></div>
+        <div class="r"><span class="num">5 gates</span><span class="lbl">review gates where my product judgment is the deciding signal</span></div>
+        <div class="r"><span class="num">25 features</span><span class="lbl">across 27 PRs in 13 weeks, review-gated at every phase</span></div>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
       <p>Product delivery follows a predictable loop - discovery, design, implementation, testing - but it's slowed by context switching across tools and artifacts, handoff latency between phases, and manual verification and rework. Even straightforward features could take days from idea to merged PR. This pipeline is how I continue to accelerate the same problem I've been solving since day one - just at a higher leverage point.</p>
 
       <h2>What I built</h2>
-      <p>A pipeline of AI agents, each owning one phase of delivery, running in sequence with clear human checkpoints so I stay in control of product judgment.</p>
+      <p>Five PM agents I built wrapping Ralph, a third-party autonomous coding agent that handles implementation. Each stage owns one phase of delivery, running in sequence with clear human checkpoints so my time stays on discovery, design, and the review gate.</p>
 
       <h3>01 · Discovery</h3>
       <p>Searches Slack, Gmail, meeting transcripts, competitors, and the codebase for context. Frames the problem and produces a structured discovery doc - JTBD framing, competitive insights, solution options - with napkin-sketch wireframes to make options concrete.</p>
@@ -61,8 +61,8 @@
       <h3>03 · PRD</h3>
       <p>Turns the reviewed prototype and decisions into a PRD broken into user stories with explicit acceptance criteria - the contract the build and test phases run against.</p>
 
-      <h3>04 · Implementation</h3>
-      <p>Reads the PRD's user stories, implements, runs checks, commits, and opens a PR.</p>
+      <h3>04 · Implementation - Ralph (open-source)</h3>
+      <p>Ralph is an open-source autonomous coding agent. It reads the PRD's user stories, implements, runs checks, commits, and opens a PR. My contribution at this step is the PRD→prd.json converter that feeds Ralph and the orchestration around it; the code-generation horsepower is Ralph's.</p>
 
       <h3>05 · Testing &amp; orchestration</h3>
       <p>Reads the PRD acceptance criteria, spins up a test DB, drives the browser via Playwright, and outputs a structured test report with screenshots and a product announcement. Orchestration wires the phases together so the pipeline runs end-to-end with review gates between stages.</p>
@@ -75,6 +75,7 @@
       <h2>Stack</h2>
       <div class="stack-list">
         <span class="chip-plain">Claude Code</span>
+        <span class="chip-plain">Ralph (open-source coding agent)</span>
         <span class="chip-plain">MCP (Slack, Gmail, Jira, transcripts)</span>
         <span class="chip-plain">Docker (test DB)</span>
         <span class="chip-plain">Playwright (acceptance testing)</span>
@@ -84,17 +85,18 @@
       <table class="dtable">
         <thead><tr><th>Metric</th><th>Before pipeline</th><th>After pipeline</th></tr></thead>
         <tbody>
-          <tr><td>Weekly code throughput</td><td>1,281 lines/week</td><td>2,374 lines/week (+85%)</td></tr>
-          <tr><td>Average PR size</td><td>704 lines</td><td>1,181 lines (+68%)</td></tr>
+          <tr><td>Weekly code throughput (system)</td><td>1,281 lines/week</td><td>2,374 lines/week (+85.4%)</td></tr>
+          <tr><td>Average PR size (system)</td><td>704 lines</td><td>1,181 lines (+67.8%)</td></tr>
           <tr><td>Output (13 weeks)</td><td>-</td><td>25 features across 27 PRs</td></tr>
         </tbody>
       </table>
-      <p>The shift wasn't just more code - it was larger, more substantive PRs landing with higher confidence at merge, each validated against explicit acceptance criteria. Engineering time shifted from review-and-co-build toward core infrastructure.</p>
+      <p>The shift I cared about is where my time goes. PRD writing, prototype iteration, and acceptance-test scripting used to be hands-on PM work. They now run through agents I review and approve, freeing me to spend more time in discovery and design. As a system-level signal, the combined pipeline (5 PM agents + Ralph) shipped at 2,374 lines/week post-adoption versus 1,281 lines/week prior, a +85.4% lift in throughput. The implementation horsepower is Ralph's; the PM scaffolding I built is what makes the output reviewable and on-spec at the gate.</p>
 
       <h2>What I learned</h2>
       <ul>
         <li><strong>The PM bottleneck isn't skill - it's the information-gathering before every decision.</strong> Agents that handle discovery, prototyping, and testing free judgment to stay where it matters: the review gate.</li>
-        <li><strong>Acceptance criteria are the contract.</strong> When the PRD names what "done" means, an agent can test against it deterministically - and confidence at merge goes up, not down.</li>
+        <li><strong>Acceptance criteria are the contract.</strong> When the PRD names what "done" means, Ralph can implement and the test agent can verify deterministically. Confidence at merge goes up, not down.</li>
+        <li><strong>Integrate frontier agents, don't reinvent them.</strong> Ralph already solved code generation. My leverage was in the scaffolding around it: agents that produce the PRDs Ralph implements against, and the ones that test what it produces.</li>
         <li><strong>Don't just ship features - build the machine that ships them.</strong> This is the operate → build → automate pattern applied to delivery itself.</li>
       </ul>
     </div>
