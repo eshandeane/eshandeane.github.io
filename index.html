@@ -8,19 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <!-- NAV -->
   <header class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <a href="/" class="brand"><span class="dot"></span>Eshan Deane</a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#impact">Needle Movers</a>
-        <a href="index.html#ai">AI in Production</a>
-        <a href="index.html#agents">Agent Workforce</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="/#impact">Needle Movers</a>
+        <a href="/#ai">AI in Production</a>
+        <a href="/#agents">Agent Workforce</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
@@ -31,15 +31,15 @@
     <div class="container hero-inner">
       <div class="hero-text">
         <p class="eyebrow name">Senior Product Manager · 8 yrs in product · 14 yrs in tech</p>
-        <h1>Builder PM. <span style="white-space:nowrap">Writes code.</span> Ships AI.</h1>
-        <p class="positioning">Product judgment on what to build. Code that ships it. Evals that prove the AI works.</p>
+        <h1>Builder PM who writes code and ships AI features and agents in production</h1>
+        <p class="positioning">I spec AI features, write the prompts, run the evals, and ship the code - owning the full cycle from prompt design through evals to deployed feature.</p>
         <div class="btn-row">
-          <a href="index.html#impact" class="btn">View the work</a>
-          <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+          <a href="/#impact" class="btn">View the work</a>
+          <a href="/contact/" class="btn btn-ghost">Get in touch</a>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="eshan.jpg" alt="Eshan Deane" />
+        <img src="/eshan.jpg" alt="Eshan Deane" />
       </div>
     </div>
   </section>
@@ -50,15 +50,19 @@
       <div class="statgrid">
         <div class="stat">
           <span class="num">40%</span>
-          <span class="lbl">faster time-to-revenue, built with one engineer</span>
+          <span class="lbl">faster time-to-revenue (189 → 113 days) from an AI powered onboarding platform built with one engineer</span>
+        </div>
+        <div class="stat">
+          <span class="num">25</span>
+          <span class="lbl">features shipped in 13 weeks through a 5-agent delivery pipeline I built around an autonomous coding engine, with PM judgment at the review gate</span>
         </div>
         <div class="stat">
           <span class="num">5</span>
-          <span class="lbl">AI features in production, covered by evals</span>
+          <span class="lbl">AI features shipped to production, covered by an LLM-as-Judge eval pipeline</span>
         </div>
         <div class="stat">
           <span class="num">$72.7K<span style="font-size:1rem;color:var(--muted-2);font-weight:500">/mo</span></span>
-          <span class="lbl">MRR, 34 accounts, 94% retention</span>
+          <span class="lbl">MRR across 34 distributor accounts onboarded, 94% retention</span>
         </div>
       </div>
     </div>
@@ -84,7 +88,7 @@
         <div class="step-card">
           <div class="k">03 - Automate</div>
           <div class="t">Automate the system itself</div>
-          <p class="d">Wrapped delivery in 5 PM agents I built around Ralph (open-source coding agent) so my time stays on discovery, design, and the review gate.</p>
+          <p class="d">Wrapped delivery in a 5-agent pipeline and AI features so the machine ships, with PM judgment held at the review gate.</p>
         </div>
       </div>
     </div>
@@ -100,7 +104,7 @@
       </div>
 
       <div class="cases">
-        <a href="case-onboarding.html" class="case-card">
+        <a href="/case-onboarding/" class="case-card">
           <span class="idx">01</span>
           <h3>Onboarded 29 distributors by hand</h3>
           <p>Managed 10–15 concurrent accounts with nightly calls to US partners from Sri Lanka. Led ERP integrations across AS/400, Eagle, FreshByte, Produce Pro, QuickBooks, Fishbowl, and custom SFTP systems. Trained an analyst who independently onboarded 5 more.</p>
@@ -113,18 +117,19 @@
           <span class="more">Read case study <span class="arr">→</span></span>
         </a>
 
-        <a href="case-platform.html" class="case-card">
+        <a href="/case-platform/" class="case-card">
           <span class="idx">02</span>
           <h3>Cut time-to-revenue 40% with an AI-enhanced platform</h3>
           <p>Saw the same onboarding bottlenecks repeat across every account. Vibe-coded a prototype to earn the mandate, then built the full platform from scratch with one engineer using Claude Code - 33 features and 4 fixes (39 PRs) in 5 months. Now live across 32 accounts.</p>
           <div class="metrics">
             <span class="chip">189 → 113 days</span>
             <span class="chip">Intake 100 → 8.5 days (11x)</span>
+            <span class="chip">$40.2K/mo new MRR</span>
           </div>
           <span class="more">Read case study <span class="arr">→</span></span>
         </a>
 
-        <a href="case-track.html" class="case-card">
+        <a href="/case-track/" class="case-card">
           <span class="idx">03</span>
           <h3>Built Track from 0 to 1</h3>
           <p>Validated demand by integrating Routific before building anything. Killed the live map no one used and pivoted to ETA notifications - the call that shaped the product. Shipped a driver app (iOS + Android), monitoring portal, and notifications.</p>
@@ -136,7 +141,7 @@
           <span class="more">Read case study <span class="arr">→</span></span>
         </a>
 
-        <a href="case-payments.html" class="case-card">
+        <a href="/case-payments/" class="case-card">
           <span class="idx">04</span>
           <h3>Payment gateway at Sysco LABS (CAKE POS)</h3>
           <p>Owned the CAKE POS payment gateway as Proxy Product Owner, building on 5 years in operations and support on the same product. Diagnosed a broken chargeback investigation workflow from support data and rebuilt the tool with engineering.</p>
@@ -163,25 +168,23 @@
       </div>
 
       <div class="ai-grid">
-        <a href="case-ai-features.html" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
+        <div class="ai-item full">
           <div class="h">
             <span class="name">5 AI features in the onboarding platform</span>
             <span class="tag">RAG · evals · prompt design</span>
           </div>
           <p>Ask FDE (RAG-powered Q&amp;A over specs and meetings, with source citations), meeting-to-account matching, spec generation, Jira ticket creation, and weekly update drafting. The weekly-update feature I built and shipped solo, end-to-end - spec, prompt design, evals, UI, and deployed code. An LLM-as-Judge pipeline surfaced that the RAG assistant's grounding averaged 46.7%, driven by open-ended summary prompts scoring 0–40% versus 95%+ on specific questions; I prioritized the citation prompt fix.</p>
           <div class="save">Collective impact: 5–7 hrs/week returned per onboarding analyst · ~4 hrs saved per new distributor on spec + ticket generation</div>
-          <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
-        </a>
+        </div>
 
-        <a href="case-ai-features.html" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
+        <div class="ai-item full">
           <div class="h">
             <span class="name">LLM-as-Judge eval pipeline</span>
             <span class="tag">evals · hallucination detection</span>
           </div>
           <p>Designed an eval pipeline across all 5 AI features that turned grounding into a measurable, monitorable metric - catching where a RAG assistant looked fine in a demo but failed on open-ended prompts. This is the AI PM discipline: not shipping AI, but knowing when it's wrong.</p>
-          <div class="save">46.7% grounding surfaced → citation fix prioritized · baselines for the other 4 features at 06/04/26, 30-day cadence</div>
-          <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
-        </a>
+          <div class="save">46.7% grounding surfaced → citation fix prioritized</div>
+        </div>
       </div>
 
       <div style="margin-top:24px" class="tag-row">
@@ -210,14 +213,14 @@
         <p>The same discipline applied to my own delivery: agents handle execution from discovery to testing, and PM judgment stays at the review gate.</p>
       </div>
       <div class="cases">
-        <a href="case-pipeline.html" class="case-card">
+        <a href="/case-pipeline/" class="case-card">
           <span class="idx">05</span>
-          <h3>5 PM agents I built around Ralph so my time goes to discovery and design</h3>
-          <p>Built 5 agents (discovery, prototyping, PRD, acceptance testing, orchestration) around Ralph, an open-source autonomous coding agent that handles implementation. Shipped 25 features across 27 PRs in 13 weeks, review-gated at every phase.</p>
+          <h3>A 5-agent delivery pipeline with PM judgment at the review gate</h3>
+          <p>Built a pipeline of 5 AI agents - discovery, prototyping, PRD, testing, orchestration - around an autonomous coding engine, shipping 25 features across 27 PRs in 13 weeks. PM judgment stays at the review gate; the agents handle execution.</p>
           <div class="metrics">
-            <span class="chip">5 agents around Ralph</span>
-            <span class="chip">5 review gates</span>
-            <span class="chip-plain">25 features / 27 PRs / 13 weeks</span>
+            <span class="chip">25 features</span>
+            <span class="chip">27 PRs</span>
+            <span class="chip-plain">13 weeks</span>
           </div>
           <span class="more">Read case study <span class="arr">→</span></span>
         </a>
@@ -249,7 +252,7 @@
           <div class="when">2026 – Present</div>
           <div class="what">
             <h4>Senior Product Manager · Cut+Dry (Series B, B2B SaaS)</h4>
-            <p>Built 5 PM agents around Ralph (open-source coding agent) so PM time goes to discovery and design, scaled the AI onboarding platform, and designed the LLM-as-Judge eval pipeline across all 5 AI features.</p>
+            <p>Built the 5-agent delivery pipeline around an autonomous coding engine, scaled the AI onboarding platform, and designed the LLM-as-Judge eval pipeline across all 5 AI features.</p>
           </div>
         </div>
         <div class="bg-row">
@@ -274,7 +277,7 @@
           </div>
         </div>
       </div>
-      <p style="margin-top:28px"><a href="about.html">Read the full story →</a></p>
+      <p style="margin-top:28px"><a href="/about/">Read the full story →</a></p>
     </div>
   </section>
 
@@ -308,11 +311,11 @@
           <div class="t">Builder PM · Ships AI in production</div>
         </div>
         <div class="links">
-          <a href="index.html#impact">Needle Movers</a>
-          <a href="index.html#ai">AI in Production</a>
-          <a href="index.html#agents">Agent Workforce</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="/#impact">Needle Movers</a>
+          <a href="/#ai">AI in Production</a>
+          <a href="/#agents">Agent Workforce</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:eshandeane@gmail.com">Email</a>
         </div>
@@ -321,6 +324,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

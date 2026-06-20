@@ -8,18 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <a href="/" class="brand"><span class="dot"></span>Eshan Deane</a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#impact">Needle Movers</a>
-        <a href="index.html#ai">AI in Production</a>
-        <a href="index.html#agents">Agent Workforce</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="/#impact">Needle Movers</a>
+        <a href="/#ai">AI in Production</a>
+        <a href="/#agents">Agent Workforce</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
@@ -27,7 +27,7 @@
 
   <section class="case-hero">
     <div class="container">
-      <a href="index.html#impact" class="back-link">← Back to work</a>
+      <a href="/#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 04 · AI in the product</p>
       <h1>5 AI features shipped into the onboarding platform</h1>
       <p class="sub">Not just using AI to build faster - building AI into the product for end users. Every feature came from a specific problem I observed during 34 manual onboardings, and every AI output keeps a human control: accept, edit, or dismiss.</p>
@@ -37,9 +37,9 @@
   <div class="result-band">
     <div class="container">
       <div class="result-grid">
-        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by eval pipeline — open-ended vs. specific query breakdown → citation fix prioritized</span></div>
         <div class="r"><span class="num">5–7 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst</span></div>
         <div class="r"><span class="num">~4 hrs</span><span class="lbl">saved per new distributor on spec + tickets</span></div>
+        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by the eval pipeline → citation fix prioritized</span></div>
       </div>
     </div>
   </div>
@@ -65,20 +65,7 @@
       <p>This one I owned entirely: spec, prompt design, evals, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>The eval discipline</h2>
-      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features, with Claude Haiku 4.5 as the judge model. Each feature has its own dimensions tied to its specific failure modes: grounding for the RAG-style features, completeness for spec generation, calibration for the matching feature, and so on. Scores are written back to the Langfuse trace they evaluated and snapshotted as dated markdown reports.</p>
-      <p>The Ask FDE eval surfaced that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap. The architecture has since moved from RAG to tool calls; the eval suite is being updated to match before a post-fix comparison run.</p>
-      <p>Baseline run 06/04/26 across the other four features:</p>
-      <table class="dtable">
-        <thead><tr><th>Feature</th><th>Headline dimension</th><th>Score</th><th>Target</th></tr></thead>
-        <tbody>
-          <tr><td>Specification</td><td>Completeness (7 sub-categories)</td><td>41.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Jira Tickets</td><td>Relevance (7 sub-categories)</td><td>31.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Meeting Matching</td><td>Reasoning Quality</td><td>59.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Control Tower</td><td>Grounding</td><td>45.0%</td><td>≥85.0%</td></tr>
-        </tbody>
-      </table>
-      <p>Most baselines are well below their ≥85.0% target. That's expected for a first baseline on internal-facing tooling: the eval is a diagnostic instrument that surfaces where each feature is currently falling short, not a marketing artifact. Cadence is 30 days going forward.</p>
-      <p>Full methodology and per-feature breakdown: <a href="https://github.com/eshandeane/shipping-ai-with-evals" target="_blank" rel="noopener">shipping-ai-with-evals</a>.</p>
+      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap.</p>
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
@@ -113,7 +100,7 @@
   <div class="case-next">
     <div class="container-narrow">
       <div class="lbl">Next case</div>
-      <a href="case-track.html">Built Track from 0 to 1 →</a>
+      <a href="/case-track/">Built Track from 0 to 1 →</a>
     </div>
   </div>
 
@@ -125,15 +112,15 @@
           <div class="t">Builder PM · Ships AI in production</div>
         </div>
         <div class="links">
-          <a href="index.html#impact">Needle Movers</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="/#impact">Needle Movers</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:eshandeane@gmail.com">Email</a>
         </div>
       </div>
     </div>
   </footer>
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>
