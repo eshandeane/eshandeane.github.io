@@ -37,9 +37,9 @@
   <div class="result-band">
     <div class="container">
       <div class="result-grid">
+        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by eval pipeline — open-ended vs. specific query breakdown → citation fix prioritized</span></div>
         <div class="r"><span class="num">5–7 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst</span></div>
         <div class="r"><span class="num">~4 hrs</span><span class="lbl">saved per new distributor on spec + tickets</span></div>
-        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by the eval pipeline → citation fix prioritized</span></div>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
       <p>This one I owned entirely: spec, prompt design, evals, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>The eval discipline</h2>
-      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap.</p>
+      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7%. Claude served as the judge, scoring each output against three criteria — groundedness (is every claim traceable to a source document?), accuracy (does the answer match the retrieved content?), and citation quality (are sources surfaced to the user?). All runs were logged to Langfuse for comparison across prompt versions. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix — I prioritized a citation prompt change rather than a broad model swap. The architecture has since moved from RAG to tool calls; the eval suite is being updated to match before a post-fix comparison run.</p>
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
