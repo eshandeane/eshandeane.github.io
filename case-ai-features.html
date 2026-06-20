@@ -65,7 +65,20 @@
       <p>This one I owned entirely: spec, prompt design, evals, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>The eval discipline</h2>
-      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7%. Claude served as the judge, scoring each output against three criteria — groundedness (is every claim traceable to a source document?), accuracy (does the answer match the retrieved content?), and citation quality (are sources surfaced to the user?). All runs were logged to Langfuse for comparison across prompt versions. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix — I prioritized a citation prompt change rather than a broad model swap. The architecture has since moved from RAG to tool calls; the eval suite is being updated to match before a post-fix comparison run.</p>
+      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features, with Claude Haiku 4.5 as the judge model. Each feature has its own dimensions tied to its specific failure modes: grounding for the RAG-style features, completeness for spec generation, calibration for the matching feature, and so on. Scores are written back to the Langfuse trace they evaluated and snapshotted as dated markdown reports.</p>
+      <p>The Ask FDE eval surfaced that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap. The architecture has since moved from RAG to tool calls; the eval suite is being updated to match before a post-fix comparison run.</p>
+      <p>Baseline run 06/04/26 across the other four features:</p>
+      <table class="dtable">
+        <thead><tr><th>Feature</th><th>Headline dimension</th><th>Score</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Specification</td><td>Completeness (7 sub-categories)</td><td>41.0%</td><td>≥85.0%</td></tr>
+          <tr><td>Jira Tickets</td><td>Relevance (7 sub-categories)</td><td>31.0%</td><td>≥85.0%</td></tr>
+          <tr><td>Meeting Matching</td><td>Reasoning Quality</td><td>59.0%</td><td>≥85.0%</td></tr>
+          <tr><td>Control Tower</td><td>Grounding</td><td>45.0%</td><td>≥85.0%</td></tr>
+        </tbody>
+      </table>
+      <p>Most baselines are well below their ≥85.0% target. That's expected for a first baseline on internal-facing tooling: the eval is a diagnostic instrument that surfaces where each feature is currently falling short, not a marketing artifact. Cadence is 30 days going forward.</p>
+      <p>Full methodology and per-feature breakdown: <a href="https://github.com/eshandeane/shipping-ai-with-evals" target="_blank" rel="noopener">shipping-ai-with-evals</a>.</p>
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
