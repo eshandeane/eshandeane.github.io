@@ -91,14 +91,13 @@
 
       <h2>Results</h2>
       <table class="dtable">
-        <thead><tr><th>Metric</th><th>Before pipeline</th><th>After pipeline</th></tr></thead>
+        <thead><tr><th>Metric</th><th>Result</th></tr></thead>
         <tbody>
-          <tr><td>Weekly code throughput (system)</td><td>1,281 lines/week</td><td>2,374 lines/week (+85.4%)</td></tr>
-          <tr><td>Average PR size (system)</td><td>704 lines</td><td>1,181 lines (+67.8%)</td></tr>
-          <tr><td>Output (13 weeks)</td><td>-</td><td>25 features across 27 PRs</td></tr>
+          <tr><td>Output across 13 weeks</td><td>25 features across 27 PRs, review-gated at every phase</td></tr>
+          <tr><td>PM time reclaimed</td><td>PRD writing, prototype iteration, and acceptance-test scripting now run through agents I review, not write</td></tr>
         </tbody>
       </table>
-      <p>The shift I cared about is where my time goes. PRD writing, prototype iteration, and acceptance-test scripting used to be hands-on PM work. They now run through agents I review and approve, freeing me to spend more time in discovery and design. As a system-level signal, the combined pipeline (5 PM agents + Ralph) shipped at 2,374 lines/week post-adoption versus 1,281 lines/week prior, a +85.4% lift in throughput. The implementation horsepower is Ralph's; the PM scaffolding I built is what makes the output reviewable and on-spec at the gate.</p>
+      <p>The shift I cared about is where my time goes. PRD writing, prototype iteration, and acceptance-test scripting used to be hands-on PM work. They now run through agents I review and approve, freeing me to spend more time in discovery and design. The implementation horsepower is Ralph's; the PM scaffolding I built is what makes the output reviewable and on-spec at the gate.</p>
 
       <h2>What I learned</h2>
       <ul>
