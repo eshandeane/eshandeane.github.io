@@ -30,7 +30,7 @@
       <a href="/#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 03 · Agentic delivery</p>
       <h1>A 5-agent delivery pipeline with PM judgment at the review gate</h1>
-      <p class="sub">Delivery was constrained by handoffs and context loss between phases. I built the orchestration agents - discovery, prototyping, PRD, testing - that wrap an autonomous coding engine into a review-gated workflow. PM judgment stays at the review gate; the agents handle execution.</p>
+      <p class="sub">Delivery was constrained by handoffs and context loss between phases. I built 5 PM agents (Lisa for discovery, Bart for prototyping, Marge for PRD, Prince for acceptance testing, Homer for orchestration) that wrap an autonomous coding engine into a review-gated workflow. PM judgment stays at the review gate; the agents handle execution.</p>
     </div>
   </section>
 
@@ -39,7 +39,7 @@
       <div class="result-grid">
         <div class="r"><span class="num">25</span><span class="lbl">features shipped in 13 weeks</span></div>
         <div class="r"><span class="num">27</span><span class="lbl">PRs, each gated on PM review against acceptance criteria</span></div>
-        <div class="r"><span class="num">5</span><span class="lbl">agents I built to wrap an autonomous coding engine</span></div>
+        <div class="r"><span class="num">5</span><span class="lbl">PM agents I built: Lisa, Bart, Marge, Prince, Homer (wrapping an autonomous coding engine)</span></div>
       </div>
     </div>
   </div>
@@ -50,35 +50,43 @@
       <p>Product delivery follows a predictable loop - discovery, design, implementation, testing - but it's slowed by context switching across tools and artifacts, handoff latency between phases, and manual verification and rework. Even straightforward features could take days from idea to merged PR. This pipeline is how I continue to accelerate the same problem I've been solving since day one - just at a higher leverage point.</p>
 
       <h2>What I built</h2>
-      <p>A pipeline of AI agents, each owning one phase of delivery, running in sequence with clear human checkpoints so I stay in control of product judgment.</p>
+      <p>Five named PM agents, each owning one phase of delivery, running in sequence with clear human checkpoints so I stay in control of product judgment. Code lives in <a href="https://github.com/eshandeane/delivery-agents" target="_blank" rel="noopener">eshandeane/delivery-agents</a> on GitHub.</p>
 
-      <h3>01 · Discovery</h3>
-      <p>Searches Slack, Gmail, meeting transcripts, competitors, and the codebase for context. Frames the problem and produces a structured discovery doc - JTBD framing, competitive insights, solution options - with napkin-sketch wireframes to make options concrete.</p>
+      <h3>01 · Lisa - Discovery</h3>
+      <p>Autonomous research agent. Searches Slack, Gmail, meeting transcripts, the web, and the codebase for context. Frames the problem, runs JTBD analysis, weighs solution tiers with a recommendation, and produces a structured discovery doc with napkin-sketch wireframes to make options concrete. Improves across runs via topic-scoped learnings written to a per-project memory file.</p>
 
-      <h3>02 · Prototyping</h3>
-      <p>Converts discovery into UI prototypes built with real components from the design system, in the codebase. Follows predefined design rules and iterates in a loop, capturing screenshots of the prototype for review and improvement.</p>
+      <h3>02 · Bart - Prototyping</h3>
+      <p>UI/UX prototyping agent that converts the approved discovery into prototypes built with real components from the design system, in a dedicated git worktree. Runs a loop of up to 15 iterations. Each iteration is a fresh Claude session that picks the next incomplete design task, then walks through build, review, and fix phases. The review phase scores 5 dimensions (visual clarity, interaction, consistency, accessibility, responsiveness) and requires a concrete browser action before each score is assigned. Cross-iteration memory lives in a learnings file so what Bart learned on the last task carries into the next.</p>
 
-      <h3>03 · PRD</h3>
-      <p>Turns the reviewed prototype and decisions into a PRD broken into user stories with explicit acceptance criteria - the contract the build and test phases run against.</p>
+      <h3>03 · Marge - PRD</h3>
+      <p>PRD writing agent. Turns the reviewed prototype and decisions into a PRD broken into user stories with explicit acceptance criteria (the contract the build and test phases run against). Drafts the PRD, then pressure-tests it through a 7-perspective review panel: engineering, design, exec, legal, UXR, skeptic, customer voice. Resolves must-fix issues across up to 2 revision cycles before shipping. Suggestions get deferred to a section at the bottom of the PRD.</p>
 
-      <h3>04 · Implementation</h3>
-      <p>An autonomous coding engine integrated into the pipeline (built by engineering, not me) reads the PRD's user stories, implements, runs checks, commits, and opens a PR. My orchestration agents exist to feed it validated context at every stage so it builds the right thing.</p>
+      <div class="callout">
+        <div class="k">The implementation step (third-party)</div>
+        <p>The 5 PM agents above wrap an autonomous coding engine I didn't build. It reads the PRD's user stories, implements them, runs checks, commits, and opens a PR. My contribution at this step is the PRD-to-prd.json converter that feeds the engine and the orchestration around it, so it builds the right thing.</p>
+      </div>
 
-      <h3>05 · Testing &amp; orchestration</h3>
-      <p>Reads the PRD acceptance criteria, spins up a test DB, drives the browser via Playwright, and outputs a structured test report with screenshots and a product announcement. Orchestration wires the phases together so the pipeline runs end-to-end with review gates between stages.</p>
+      <h3>04 · Prince - Acceptance testing</h3>
+      <p>Reads the PRD's acceptance criteria, spins up a Docker test DB, drives the browser through every criterion via Playwright, and outputs a structured pass/fail report with screenshots and a draft product announcement. On a failed criterion, enters an auto-fix loop: read the failure, attempt a fix, re-run the criterion, re-evaluate. Repeats until pass or flags the criterion for human review.</p>
+
+      <h3>05 · Homer - Orchestration</h3>
+      <p>The orchestrator agent. Runs unattended on a launchd schedule (3 times a day) and scans Jira tickets in Roadmap and Design status. For each Roadmap ticket, Homer searches Circleback, Slack, and Gmail for real signal on the problem; if three criteria pass (clear pain, named user, real signal), Homer triggers Lisa. For each Design ticket, Homer looks for an attached design brief and triggers Bart in worktree mode if found. Homer never transitions a Jira ticket status (that's always the PM's call); the comment thread Homer posts on each ticket is the audit trail.</p>
 
       <div class="callout">
         <div class="k">How it works - review-gated</div>
-        <p>I give the discovery agent a feature idea in plain English. It produces a discovery doc; I review and decide. The prototyping agent produces prototypes; I review and write the PRD. Implementation opens a PR; the test agent validates against acceptance criteria. My role stays on product judgment and tradeoffs. The agents handle execution.</p>
+        <p>Homer scans Jira and triggers Lisa on a ticket with real signal. Lisa produces a discovery doc; I review and decide on a solution. Bart produces prototypes against the chosen direction; I review and approve the design. Marge drafts the PRD and runs it through her 7-perspective review panel; I read the final PRD. The autonomous coding engine implements against the PRD and opens a PR. Prince validates against acceptance criteria and reports pass/fail. My role stays on product judgment and tradeoffs at each gate. The agents handle execution.</p>
       </div>
 
       <h2>Stack</h2>
       <div class="stack-list">
         <span class="chip-plain">Claude Code</span>
-        <span class="chip-plain">MCP (Slack, Gmail, Jira, transcripts)</span>
-        <span class="chip-plain">Docker (test DB)</span>
-        <span class="chip-plain">Playwright (acceptance testing)</span>
+        <span class="chip-plain">MCP (Atlassian, Slack, Gmail, Circleback, Fathom)</span>
+        <span class="chip-plain">launchd (Homer scheduled runs)</span>
+        <span class="chip-plain">Docker (Prince test DB)</span>
+        <span class="chip-plain">Playwright (Bart review + Prince testing)</span>
+        <span class="chip-plain">git worktrees (Bart isolated branches)</span>
       </div>
+      <p>Open source: <a href="https://github.com/eshandeane/delivery-agents" target="_blank" rel="noopener">eshandeane/delivery-agents</a> on GitHub.</p>
 
       <h2>Results</h2>
       <table class="dtable">
@@ -119,6 +127,7 @@
           <a href="/about/">About</a>
           <a href="/contact/">Contact</a>
           <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/eshandeane" target="_blank" rel="noopener">GitHub</a>
           <a href="mailto:eshandeane@gmail.com">Email</a>
         </div>
       </div>
