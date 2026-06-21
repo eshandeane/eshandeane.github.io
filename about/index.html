@@ -56,6 +56,11 @@
       <p>The part I care most about is the eval discipline. I designed an LLM-as-Judge pipeline across all five features and used it to surface that the RAG assistant's grounding averaged 46.7% - then broke that down to find open-ended summary prompts scoring 0–40% versus 95%+ on specific questions, and prioritized a citation prompt fix. That's the distinction I'd draw: an AI PM isn't someone who specs AI features. It's someone who can name their eval framework and tell you when the model is wrong.</p>
       <p>Most recently I wrapped delivery itself in a 5-agent pipeline - discovery, prototyping, PRD, testing, orchestration - building the orchestration agents around an autonomous coding engine while keeping PM judgment at the review gate. I don't just ship features; I build the machine that ships them.</p>
 
+      <h2>How I started shipping code</h2>
+      <p>The onboarding platform started as a v0 prototype. I built a working version with a React frontend, Node.js backend, and MySQL database using Cursor - enough to earn the mandate to lead product for onboarding. We scrapped that prototype and built the real platform from scratch with one engineer.</p>
+      <p>For the first few weeks I only vibe-coded frontend changes; the engineer owned backend. Within 3 months we'd built the harness and hooked up the agents that let me work end-to-end - both frontend and backend, on real production code. Now I ship entire features myself: spec, frontend, backend, deployment. Engineering reviews at the gate instead of building from spec.</p>
+      <p>The 74 PRs and 44K lines on the homepage aren't a side project. They're the result of moving the constraint: from "I write specs and wait" to "I ship the feature and someone reviews it."</p>
+
       <h2>What I'm looking for</h2>
       <p>An AI PM or Senior PM role at a Series B–D tech or fintech company in Kuala Lumpur or the wider SEA region - somewhere with AI in production today, genuine product ownership from discovery through delivery, and operationally complex problems worth solving. I'm based in Colombo, Sri Lanka and relocating to Kuala Lumpur. The domains I've lived in - dealer/partner onboarding, last-mile logistics, conversational AI with evals, and payments - map directly onto the companies building in SEA right now.</p>
 
