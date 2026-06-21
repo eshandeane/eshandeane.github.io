@@ -39,7 +39,7 @@
       <div class="result-grid">
         <div class="r"><span class="num">4</span><span class="lbl">distributor fleets launched</span></div>
         <div class="r"><span class="num">8,000+</span><span class="lbl">restaurants served</span></div>
-        <div class="r"><span class="num">2,500</span><span class="lbl">restaurant enterprise rollout at Hillcrest</span></div>
+        <div class="r"><span class="num">2,500</span><span class="lbl">restaurant enterprise rollout at the largest distributor on Track</span></div>
       </div>
     </div>
   </div>
@@ -48,14 +48,16 @@
     <div class="container-narrow">
       <h2>How it started</h2>
       <p>In 2020, COVID shut down restaurants but opened a new channel: direct-to-consumer food delivery. Cut+Dry pivoted to help distributors ship directly to consumers - a new fulfillment model that needed routing, tracking, and delivery notifications. Instead of building from scratch, I integrated Routific, a third-party routing platform, to test whether the value prop held before committing engineering to it.</p>
-      <p>It did. Distributors wanted delivery visibility; customers wanted ETAs. But Routific was built for generic delivery, not foodservice - it didn't handle midnight truck departures, back-haul stops, catch-weight products, or multi-stop routes with 30–40 drops, and the licensing cost didn't scale. So I scoped and built Track, carrying over the validated value prop while building for the domain's actual complexity.</p>
+      <p>It did. Distributors wanted delivery visibility; customers wanted ETAs. But Routific was built for generic delivery, not foodservice - it didn't handle midnight truck departures, back-haul stops, catch-weight products, or multi-stop routes with 30–40 drops, and the licensing cost didn't scale. So I scoped and shipped Track with engineering, carrying over the validated value prop while building for the domain's actual complexity.</p>
 
       <div class="callout">
         <div class="k">The pivot that shaped the product</div>
         <p>We first built a live map for restaurants to watch their truck - the Uber Eats model applied to foodservice. It flopped. Restaurant managers aren't consumers tracking a burger from the couch; they're running a kitchen. I scrapped the live-tracking screen and reframed the entire product around ETA notifications: tell the restaurant when to expect the truck so they can have someone at the dock, then get out of the way.</p>
       </div>
 
-      <h2>What I built</h2>
+      <h2>What I scoped and launched</h2>
+      <p>The engineering team built; I scoped the product, drove releases, and ran the launches.</p>
+
       <h3>Driver app (iOS + Android)</h3>
       <p>Drove releases v2.0.3 through v2.0.7, each informed by real driver feedback: a "select next stop" override for experienced drivers who know traffic patterns, delivery photo capture with gallery support, at-a-glance stop status icons, odometer and break/lunch logging for compliance, and a downloadable PDF delivery log.</p>
 
@@ -66,8 +68,8 @@
       <p>Automated SMS and email notifications with ETA windows, tuned against actual route data - one distributor's initial 2-hour windows were too vague to be useful, so we tightened them.</p>
 
       <h2>How I launched it</h2>
-      <p><strong>Golden Gate Meat (first customer)</strong> was the pilot - configuring routes, onboarding drivers, and launching branded customer notifications. The main challenge was driver adoption: drivers are delivering 500-pound pallets of meat at 4 AM, so the app had to be dead simple. <strong>Pacific Produce</strong> surfaced data-quality and timezone edge cases requiring coordinated fixes across the portal, driver app, and customer-facing surfaces.</p>
-      <p><strong>Hillcrest Foodservice</strong> was the most complex deployment: 2,500 active restaurants, 6-day-a-week delivery, trucks leaving at midnight. I negotiated route-file timing using an order-completeness matrix (6 AM = 95% completeness on weekdays), rolled out from 3 test drivers to the full fleet, and handled edge cases like back-haul stops and ~60 invalid addresses. During rollout I personally dispatched routes and monitored stops - you can't project-manage a midnight truck departure from a Jira board.</p>
+      <p>The <strong>first customer</strong> was the pilot - configuring routes, onboarding drivers, and launching branded customer notifications. The main challenge was driver adoption: drivers are delivering 500-pound pallets of meat at 4 AM, so the app had to be dead simple. The <strong>second customer</strong> surfaced data-quality and timezone edge cases requiring coordinated fixes across the portal, driver app, and customer-facing surfaces.</p>
+      <p>The <strong>largest enterprise customer</strong> was the most complex deployment: 2,500 active restaurants, 6-day-a-week delivery, trucks leaving at midnight. I negotiated route-file timing using an order-completeness matrix (6 AM = 95% completeness on weekdays), rolled out from 3 test drivers to the full fleet, and handled edge cases like back-haul stops and ~60 invalid addresses. During rollout I personally dispatched routes and monitored stops - you can't project-manage a midnight truck departure from a Jira board.</p>
 
       <h2>What I learned</h2>
       <ul>
