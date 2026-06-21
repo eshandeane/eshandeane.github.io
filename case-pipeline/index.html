@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A 5-Agent Delivery Pipeline with PM Judgment at the Review Gate - Eshan Deane</title>
-  <meta name="description" content="Built a 5-agent delivery pipeline (discovery, prototyping, PRD, testing, orchestration) around an autonomous coding engine, with PM judgment held at the review gate." />
+  <title>5 PM Agents Around Ralph: A Review-Gated Delivery Pipeline - Eshan Deane</title>
+  <meta name="description" content="Built 5 PM agents (Lisa, Bart, Marge, Prince, Homer) around Ralph, an open-source autonomous coding agent. PM judgment held at the review gate; agents handle execution." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -29,8 +29,8 @@
     <div class="container">
       <a href="/#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 03 · Agentic delivery</p>
-      <h1>A 5-agent delivery pipeline with PM judgment at the review gate</h1>
-      <p class="sub">Delivery was constrained by handoffs and context loss between phases. I built 5 PM agents (Lisa for discovery, Bart for prototyping, Marge for PRD, Prince for acceptance testing, Homer for orchestration) that wrap an autonomous coding engine into a review-gated workflow. PM judgment stays at the review gate; the agents handle execution.</p>
+      <h1>Built 5 PM agents around Ralph so my time goes to discovery and design</h1>
+      <p class="sub">Delivery was constrained by handoffs and context loss between phases. I built 5 PM agents (Lisa for discovery, Bart for prototyping, Marge for PRD, Prince for acceptance testing, Homer for orchestration) that wrap Ralph, an open-source autonomous coding agent that handles implementation. The pipeline runs review-gated: agents do the artifact work; I make the product calls.</p>
     </div>
   </section>
 
@@ -39,7 +39,7 @@
       <div class="result-grid">
         <div class="r"><span class="num">25</span><span class="lbl">features shipped in 13 weeks</span></div>
         <div class="r"><span class="num">27</span><span class="lbl">PRs, each gated on PM review against acceptance criteria</span></div>
-        <div class="r"><span class="num">5</span><span class="lbl">PM agents I built: Lisa, Bart, Marge, Prince, Homer (wrapping an autonomous coding engine)</span></div>
+        <div class="r"><span class="num">5</span><span class="lbl">PM agents I built: Lisa, Bart, Marge, Prince, Homer (wrapping Ralph for implementation)</span></div>
       </div>
     </div>
   </div>
@@ -62,8 +62,8 @@
       <p>PRD writing agent. Turns the reviewed prototype and decisions into a PRD broken into user stories with explicit acceptance criteria (the contract the build and test phases run against). Drafts the PRD, then pressure-tests it through a 7-perspective review panel: engineering, design, exec, legal, UXR, skeptic, customer voice. Resolves must-fix issues across up to 2 revision cycles before shipping. Suggestions get deferred to a section at the bottom of the PRD.</p>
 
       <div class="callout">
-        <div class="k">The implementation step (third-party)</div>
-        <p>The 5 PM agents above wrap an autonomous coding engine I didn't build. It reads the PRD's user stories, implements them, runs checks, commits, and opens a PR. My contribution at this step is the PRD-to-prd.json converter that feeds the engine and the orchestration around it, so it builds the right thing.</p>
+        <div class="k">Ralph - Implementation (third-party, open-source)</div>
+        <p>Ralph isn't one of the 5 agents I built. It's the open-source autonomous coding agent that handles implementation: reads the PRD's user stories, implements them, runs checks, commits, and opens a PR. My contribution at this step is the PRD-to-prd.json converter that feeds Ralph and the orchestration around it, so it builds the right thing.</p>
       </div>
 
       <h3>04 · Prince - Acceptance testing</h3>
@@ -74,7 +74,7 @@
 
       <div class="callout">
         <div class="k">How it works - review-gated</div>
-        <p>Homer scans Jira and triggers Lisa on a ticket with real signal. Lisa produces a discovery doc; I review and decide on a solution. Bart produces prototypes against the chosen direction; I review and approve the design. Marge drafts the PRD and runs it through her 7-perspective review panel; I read the final PRD. The autonomous coding engine implements against the PRD and opens a PR. Prince validates against acceptance criteria and reports pass/fail. My role stays on product judgment and tradeoffs at each gate. The agents handle execution.</p>
+        <p>Homer scans Jira and triggers Lisa on a ticket with real signal. Lisa produces a discovery doc; I review and decide on a solution. Bart produces prototypes against the chosen direction; I review and approve the design. Marge drafts the PRD and runs it through her 7-perspective review panel; I read the final PRD. Ralph implements against the PRD and opens a PR. Prince validates against acceptance criteria and reports pass/fail. My role stays on product judgment and tradeoffs at each gate. The agents handle execution.</p>
       </div>
 
       <h2>Stack</h2>
