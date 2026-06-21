@@ -199,7 +199,7 @@ strong { color: var(--ink); font-weight: 620; }
 /* ---------- Stat band (bento tiles) ---------- */
 .statband { padding: 8px 0 32px; }
 .statgrid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .stat {
