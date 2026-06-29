@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smith - a 15-minute command for a go-live blocker - Eshan Deane</title>
+  <meta name="description" content="Smith is a standalone agent that turns a critical-path distributor go-live blocker (app-store screenshots) into a one-command 15-minute run. First production release went end-to-end in 15 minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#impact">Needle Movers</a>
+        <a href="/#ai">AI in Production</a>
+        <a href="/#agents">Agent Workforce</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="/#agents" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study · Standalone agent</p>
+      <h1>Smith - turning a critical-path go-live blocker into a 15-minute command</h1>
+      <p class="sub">Distributor go-live ran on a week-one dependency chain: the white-label mobile app had to be published to the App Store and Play Store before a launch could happen. Publication needed screenshots - six pages each, captured on iPhone, Android, and iPad, composited into store-ready device frames, and filed via a Jira ticket. Each step was small; together they burned 2-3 hours per release and held up entire app submissions. I built Smith, a standalone agent that runs the whole pipeline from one command. First production release: end-to-end in 15 minutes.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num">15</span><span class="lbl">minutes per release, down from 2-3 hours of manual work</span></div>
+        <div class="r"><span class="num">18</span><span class="lbl">store-ready frames composited in one command (6 pages × 3 device sizes)</span></div>
+        <div class="r"><span class="num">1</span><span class="lbl">Jira ticket auto-created - the agent closes its own handoff</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>Why screenshots were the bottleneck</h2>
+      <p>App-store publication is a critical-path week-one dependency for every distributor launch - the apps simply can't ship until it's done. And publication can't start until the screenshots are. The manual flow looked easy on paper but didn't flow in practice: wait for the white-label app to be branded and ready, log in across three device platforms, capture six pages each, composite the captures into the device frames the stores expect, and file the Jira ticket. Doing it well took 2-3 hours per release. Doing it across many distributors at once held up entire app submissions.</p>
+      <p>A teammate flagged the pain directly in an onboarding sync: <em>"This has been holding back a bunch of the apps. We first need to wait for the white-label app to be done; then we need to go in and take the screenshots. When you add in time zone, it just doesn't flow as smoothly."</em> Another framed it as a critical-path dependency in a weekly sync: <em>"When we go into week one, one of the big dependencies we have is the app needs to be published in the app store."</em></p>
+
+      <h2>What I built</h2>
+      <p>Smith is a standalone agent. One command, four inputs, one output: give it the white-label URL, the customer test credentials, the brand color, and the app name. It logs in to the white-label app, captures six pages across three device platforms (iPhone, Android, iPad), composites each capture into the right store-ready device frame, and creates the Jira ticket engineering files against. Nothing else to babysit.</p>
+
+      <h3>The first production release</h3>
+      <p>Smith's first end-to-end run on a real distributor took fifteen minutes - start to filed ticket. From my own walk-through that day:</p>
+      <div class="callout">
+        <div class="k">In my own words</div>
+        <p>"I just give it the URL, the username and password to the white-label app, the branding, the primary color, and the name of the app. It logs in automatically… takes the screenshots, downloads them, and inserts them into the iPhone, Android, and iPad frames."</p>
+      </div>
+
+      <h3>From local script to platform feature</h3>
+      <p>Smith started as a script running on my machine - fine when I was the only one launching distributors, not fine when the rest of the team needed to. The productization path I laid out was deliberately simple: keep the same input contract (URL + credentials + brand + app name), move the runtime into the FDE platform, and let any teammate trigger it self-serve.</p>
+      <div class="callout">
+        <div class="k">Announcing the productization plan</div>
+        <p>"We managed to automate the white-label screens. That's currently an agent running on my machine, so for the moment I'll take care of it. In the future we'll add it to the FDE tool - you give it the white-label URL, the customer test account, username, and password, and it runs."</p>
+      </div>
+
+      <h3>Recognition</h3>
+      <p>Smith was flagged internally as a model AI-adoption win by the team driving AI rollout at Cut+Dry. It gets noticed because the unit economics are obvious: a chunk of repetitive PM work - 2-3 hours of careful, error-prone setup per release - turned into a one-command run that closes its own Jira ticket.</p>
+
+      <h2>Stack</h2>
+      <div class="stack-list">
+        <span class="chip-plain">Browser automation (white-label app login + page capture)</span>
+        <span class="chip-plain">Device-frame compositing (iPhone, Android, iPad)</span>
+        <span class="chip-plain">Jira API (auto-created submission ticket)</span>
+        <span class="chip-plain">Minimal input contract (URL + creds + brand + app name)</span>
+      </div>
+      <p>Currently runs as a local script; in productization to ship inside the FDE platform as a self-serve action any teammate can trigger.</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>The best standalone agents do one task end-to-end.</strong> Smith doesn't try to be a platform. It owns one chunk of work - screenshots → store-ready frames → ticket filed - and owns it completely. That's why the savings are real, not hypothetical.</li>
+        <li><strong>The input contract is the user experience.</strong> Four inputs (URL, credentials, brand color, app name) - that's the entire learning curve for a teammate. Anything more and Smith would have stayed on my machine forever.</li>
+        <li><strong>Pick agents that close their own handoff.</strong> Auto-creating the Jira ticket at the end isn't a flourish; it's what removes me from the loop. An agent that hands work back to a person isn't done.</li>
+        <li><strong>The bottleneck wasn't the screenshots - it was the wait.</strong> The pain teammates flagged ("holding back a bunch of the apps") was about sequencing as much as minutes. Cutting the work from 2-3 hours to 15 minutes is what unblocks the sequence.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="/case-pm-agent/">FDE PM Agent on Obvious →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="/#impact">Needle Movers</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/eshandeane" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>
