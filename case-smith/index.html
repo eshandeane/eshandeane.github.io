@@ -60,8 +60,8 @@
         <p>"I just give it the URL, the username and password to the white-label app, the branding, the primary color, and the name of the app. It logs in automatically… takes the screenshots, downloads them, and inserts them into the iPhone, Android, and iPad frames."</p>
       </div>
 
-      <h3>From local script to platform feature</h3>
-      <p>Smith started as a script running on my machine - fine when I was the only one launching distributors, not fine when the rest of the team needed to. The productization path I laid out was deliberately simple: keep the same input contract (URL + credentials + brand + app name), move the runtime into the FDE platform, and let any teammate trigger it self-serve.</p>
+      <h3>What's next - from local script to platform feature</h3>
+      <p>Smith still runs as a script on my machine - fine when I was the only one launching distributors, not fine once the rest of the team needs to run it. The productization path is planned but not shipped yet: keep the same input contract (URL + credentials + brand + app name), move the runtime into the FDE platform, and let any teammate trigger it self-serve. The input contract has been deliberately small from day one so the productization step is a runtime move, not a redesign.</p>
       <div class="callout">
         <div class="k">Announcing the productization plan</div>
         <p>"We managed to automate the white-label screens. That's currently an agent running on my machine, so for the moment I'll take care of it. In the future we'll add it to the FDE tool - you give it the white-label URL, the customer test account, username, and password, and it runs."</p>
@@ -77,12 +77,12 @@
         <span class="chip-plain">Jira API (auto-created submission ticket)</span>
         <span class="chip-plain">Minimal input contract (URL + creds + brand + app name)</span>
       </div>
-      <p>Currently runs as a local script; in productization to ship inside the FDE platform as a self-serve action any teammate can trigger.</p>
+      <p>Currently runs as a local script on my machine. Planned to ship inside the FDE platform as a self-serve action any teammate can trigger; not yet shipped.</p>
 
       <h2>What I learned</h2>
       <ul>
         <li><strong>The best standalone agents do one task end-to-end.</strong> Smith doesn't try to be a platform. It owns one chunk of work - screenshots → store-ready frames → ticket filed - and owns it completely. That's why the savings are real, not hypothetical.</li>
-        <li><strong>The input contract is the user experience.</strong> Four inputs (URL, credentials, brand color, app name) - that's the entire learning curve for a teammate. Anything more and Smith would have stayed on my machine forever.</li>
+        <li><strong>The input contract is the user experience.</strong> Four inputs (URL, credentials, brand color, app name) - that's the entire learning curve for a teammate once Smith ships as a platform feature. Keeping the contract this small from day one is what makes the productization a runtime move rather than a redesign.</li>
         <li><strong>Pick agents that close their own handoff.</strong> Auto-creating the Jira ticket at the end isn't a flourish; it's what removes me from the loop. An agent that hands work back to a person isn't done.</li>
         <li><strong>The bottleneck wasn't the screenshots - it was the wait.</strong> The pain teammates flagged ("holding back a bunch of the apps") was about sequencing as much as minutes. Cutting the work from 2-3 hours to 15 minutes is what unblocks the sequence.</li>
       </ul>
