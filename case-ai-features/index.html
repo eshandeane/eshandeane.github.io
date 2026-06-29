@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5 AI Features Shipped in the Platform - Eshan Deane</title>
-  <meta name="description" content="Five production AI features - RAG Q&A, meeting matching, spec generation, Jira ticket creation, weekly update drafting - with ~26x usage growth across the analyst team in 6 months." />
+  <title>3 AI Features I Shipped in the Platform - Eshan Deane</title>
+  <meta name="description" content="Three production AI features I shipped on engineering-built rails - Ask FDE (RAG Q&A), Jira ticket creation, and weekly update drafting - with ~51x usage growth across the analyst team in 6 months." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -29,17 +29,17 @@
     <div class="container">
       <a href="/#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 04 · AI in the product</p>
-      <h1>5 AI features shipped into the onboarding platform</h1>
-      <p class="sub">Not just using AI to build faster - building AI into the product for end users. Every feature came from a specific problem I observed during 34 manual onboardings, and every AI output keeps a human control: accept, edit, or dismiss.</p>
+      <h1>3 AI features I shipped in the onboarding platform</h1>
+      <p class="sub">Not just using AI to build faster - building AI into the product for end users. I owned the prompt design and the user-side behavior on three features (Ask FDE, Jira ticket creation, weekly update drafting), built on data-ingestion rails engineering put in place. Each feature came from a bottleneck I hit during 34 manual onboardings, and each AI output keeps a human control: accept, edit, or dismiss.</p>
     </div>
   </section>
 
   <div class="result-band">
     <div class="container">
       <div class="result-grid">
-        <div class="r"><span class="num">5–7 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst</span></div>
-        <div class="r"><span class="num">~4 hrs</span><span class="lbl">saved per new distributor on spec + tickets</span></div>
-        <div class="r"><span class="num">~26x</span><span class="lbl">AI feature usage growth in 6 months (PostHog, 01/01/26 → 06/26/26)</span></div>
+        <div class="r"><span class="num">~2.5–3.5 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst from the 3 features</span></div>
+        <div class="r"><span class="num">~2 hrs</span><span class="lbl">saved per new distributor on ticket generation</span></div>
+        <div class="r"><span class="num">~51x</span><span class="lbl">AI feature usage growth in 6 months (PostHog, 01/01/26 → 06/26/26)</span></div>
       </div>
     </div>
   </div>
@@ -47,37 +47,29 @@
   <div class="prose">
     <div class="container-narrow">
       <h2>The throughline</h2>
-      <p>The time lost searching transcripts, the hours writing specs and tickets, the context that died in meeting recordings - these shaped what I built and why. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
+      <p>The time lost searching transcripts, the hours writing tickets, the context that died in meeting recordings - these shaped what I built and why. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss controls) on the three features below; engineering owned the underlying data-ingestion rails. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
 
       <h2>1 · Ask FDE - RAG-powered workspace Q&amp;A</h2>
       <p>Onboarding analysts run 5–6 back-to-back calls daily across 10–17 concurrent accounts. Between calls, answering "what's blocking this account right now?" used to mean switching between Circleback transcripts, the spec document, and Jira. Ask FDE is a conversational assistant embedded in each workspace, grounded in three sources - the specification, uploaded meeting transcripts, and synced Jira tickets - using a per-workspace semantic search store. Every answer carries source citations so users see exactly which meeting, spec section, or ticket it came from, and it degrades gracefully to spec-only context before meetings are uploaded.</p>
 
-      <h2>2 · Meeting-to-account matching</h2>
-      <p>Every call generates decisions and commitments that die in recordings unless someone extracts and connects them. A webhook integration ingests recordings from Circleback and Fathom, and an AI step identifies the correct distributor account by analyzing attendees, title, and notes - no manual assignment. Approved meetings are indexed into per-workspace search stores, forming the data backbone for Ask FDE and the Control Tower. (287 historical recordings were sitting unmatched before this shipped.)</p>
+      <h2>2 · Jira ticket generation</h2>
+      <p>After spec sign-off, a three-phase AI pipeline parses the spec into categories, generates tickets per category using domain-specific prompts, and persists them as reviewable drafts. Managers approve, edit, or reject individual tickets before a batch export to Jira with parallel execution and relevant data files attached - replacing the manual creation of 30–80 tickets per account.</p>
 
-      <h2>3 · Spec generation</h2>
-      <p>Once questionnaire responses are collected across four intake stages, someone has to read all of it and write a structured specification across seven categories - the source of truth for the entire integration. One-click generation reads all completed responses and produces a fully editable spec, run in parallel per section. Delta reviews and corrects before it goes to the distributor for sign-off, and the signed spec feeds ticket generation downstream.</p>
-
-      <h2>4 · Jira ticket generation</h2>
-      <p>After sign-off, a three-phase AI pipeline parses the spec into categories, generates tickets per category using domain-specific prompts, and persists them as reviewable drafts. Managers approve, edit, or reject individual tickets before a batch export to Jira with parallel execution and relevant data files attached - replacing the manual creation of 30–80 tickets per account.</p>
-
-      <h2>5 · Weekly update drafting - prompt design + UX on existing rails</h2>
-      <p>Here I owned the prompt design and the user-side behavior; meeting ingestion was already running from the matching feature. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
+      <h2>3 · Weekly update drafting</h2>
+      <p>Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>Usage in production</h2>
       <p>The AI PM work isn't shipping AI — it's shipping AI that real users actually adopt. Every feature is instrumented in PostHog so I can see whether analysts are reaching for it, and which ones stuck.</p>
-      <p>Combined usage across the five features grew ~26x in 6 months — from 19 events in January 2026 to 497 by 06/26/26, with 4 days still to come in the month. Monthly active analysts on AI features went from 4 to 37 over the same window.</p>
+      <p>Combined usage across the three features I shipped grew ~51x in 6 months — from 7 events in January 2026 to 357 by 06/26/26, with 4 days still to come in the month. Monthly active analysts on these features went from 1 to 32 over the same window.</p>
       <table class="dtable">
         <thead><tr><th>Feature</th><th>First month → latest month</th><th>Peak unique analysts</th></tr></thead>
         <tbody>
           <tr><td>Ask FDE (RAG Q&amp;A)</td><td>2 events (January) → 308 (April)</td><td>31</td></tr>
-          <tr><td>Meeting matching</td><td>95 events (March) → 134 (June)</td><td>31</td></tr>
-          <tr><td>Weekly updates (prompt + UX)</td><td>24 events (May, launched 05/18/26) → 245 (June)</td><td>9</td></tr>
-          <tr><td>Spec generation</td><td>Per-distributor cadence; 15 generations across 6 analysts in last 90 days</td><td>6</td></tr>
           <tr><td>Jira tickets</td><td>Per-distributor cadence; 33 ticket-batch runs across 7 managers in last 90 days</td><td>7</td></tr>
+          <tr><td>Weekly updates</td><td>24 events (May, launched 05/18/26) → 245 (June)</td><td>9</td></tr>
         </tbody>
       </table>
-      <p>Three of the five (Ask FDE, meeting matching, weekly updates) are now part of the analyst team's daily workflow. The other two (spec, tickets) fire per new distributor, which is the right cadence for what they do.</p>
+      <p>Ask FDE and weekly updates are now part of the analyst team's daily workflow. Jira ticket generation fires per new distributor, which is the right cadence for what it does.</p>
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
@@ -92,13 +84,11 @@
         <thead><tr><th>Cadence</th><th>Feature</th><th>Saved</th></tr></thead>
         <tbody>
           <tr><td>Daily</td><td>Ask FDE</td><td>~20–30 min/day</td></tr>
-          <tr><td>Weekly</td><td>Meeting matching</td><td>~75 min/week</td></tr>
           <tr><td>Weekly</td><td>Weekly update draft</td><td>~50–55 min/week</td></tr>
-          <tr><td>Per distributor</td><td>Spec generation</td><td>~2 hrs each</td></tr>
           <tr><td>Per distributor</td><td>Jira ticket generation</td><td>~2 hrs each</td></tr>
         </tbody>
       </table>
-      <p>Recurring: 5–7 hours/week per analyst. Per new distributor: ~4 hours on spec + tickets. Time that was previously absorbed into evenings and weekends.</p>
+      <p>Recurring: ~2.5–3.5 hours/week per analyst from the three features I shipped. Per new distributor: ~2 hours on ticket generation. Time that was previously absorbed into evenings and weekends.</p>
 
       <h2>Stack</h2>
       <div class="stack-list">
