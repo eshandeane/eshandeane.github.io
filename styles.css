@@ -214,6 +214,17 @@ strong { color: var(--ink); font-weight: 620; }
   display: block; margin-bottom: 10px;
 }
 .stat .lbl { font-size: 0.82rem; color: var(--muted); line-height: 1.45; display: block; }
+a.stat {
+  display: block;
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.2, .7, .3, 1), box-shadow .25s ease, background .25s ease;
+}
+a.stat:hover {
+  background: #fff;
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
 .stat .asof {
   font-family: var(--mono);
   font-size: 0.6rem;
