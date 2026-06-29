@@ -50,7 +50,7 @@
       <p>Product requests for the FDE Platform arrived as Slack messages, Jira tickets, and side-of-desk pings - often without clear scope, named users, or success criteria. Engineering would either build the wrong thing or stall waiting on clarification. The bottleneck wasn't writing the spec; it was the discipline of running the discovery loop before the spec is worth writing.</p>
 
       <h2>What I built</h2>
-      <p>A team-facing agent on Obvious - an AI agent platform with built-in Slack and Jira integrations - that operates the PM discovery discipline at scale. It wakes on two triggers and runs a two-phase sub-agent architecture, with the spec written only after a human says yes.</p>
+      <p>A team-facing agent on <a href="https://obvious.ai/" target="_blank" rel="noopener">Obvious</a> - an AI agent platform with built-in Slack and Jira integrations - that operates the PM discovery discipline at scale. It wakes on two triggers and runs a two-phase sub-agent architecture, with the spec written only after a human says yes.</p>
 
       <h3>Triggers and silent gating</h3>
       <p>The agent subscribes to the FDE Slack channels and a Jira webhook on tickets transitioning to <em>Design</em>. On every Slack wake, the first step is a binary classification: <em>is this a real work request?</em> If not, the agent stays silent - even when @mentioned. A mention attached to general chatter, an opinion question, or a tooling discussion is still a no-op. No reactions, no "want me to spec this?" follow-ups, no explanation of why it's quiet. Silence is the right behavior, and stating it explicitly in the operating spec is what makes it reliable.</p>
