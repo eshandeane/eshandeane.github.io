@@ -60,7 +60,7 @@
         </div>
         <div class="stat">
           <span class="num">3</span>
-          <span class="lbl">AI features I shipped (prompt + UX) on engineering-built rails · ~51x usage growth across the analyst team in 6 months (PostHog)</span>
+          <span class="lbl">AI features I shipped end-to-end (prompt + UX) on engineering-built rails · PM on 5 total · ~51x usage growth on the 3 in 6 months (PostHog)</span>
         </div>
         <div class="stat">
           <span class="num">40%</span>
@@ -174,16 +174,16 @@
       <div class="section-head">
         <p class="eyebrow">02 · AI in Production</p>
         <h2>Features real users touch, with growing adoption</h2>
-        <p>Three AI features I shipped into the platform (prompt design + UX) on data-ingestion rails engineering built. Instrumented in PostHog so adoption is visible, not assumed. Every AI output is reviewable - accept, edit, dismiss.</p>
+        <p>Three AI features I shipped into the platform end-to-end (prompt design + UX) on data-ingestion rails engineering built. I was also PM on two more (meeting matching, spec generation) — requirements and testing while engineering owned the build. Instrumented in PostHog so adoption is visible, not assumed. Every AI output is reviewable - accept, edit, dismiss.</p>
       </div>
 
       <div class="ai-grid">
         <a href="/case-ai-features/" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
           <div class="h">
-            <span class="name">3 AI features I shipped (prompt + UX)</span>
+            <span class="name">3 AI features I shipped end-to-end (prompt + UX)</span>
             <span class="tag">RAG · prompt design · in production</span>
           </div>
-          <p>Ask FDE (RAG-powered Q&amp;A over specs and meetings, with source citations), Jira ticket generation, and weekly update drafting. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss); engineering owned the data-ingestion rails. Each feature came from a bottleneck I hit during 34 manual onboardings, and each one keeps a human control: accept, edit, dismiss.</p>
+          <p>Ask FDE (RAG-powered Q&amp;A over specs and meetings, with source citations), Jira ticket generation, and weekly update drafting. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss); engineering owned the data-ingestion rails. I was also PM on two more AI features in the platform — meeting matching and spec generation — where I owned requirements and testing while engineering owned the build. Each feature came from a bottleneck I hit during 34 manual onboardings, and each one keeps a human control: accept, edit, dismiss.</p>
           <div class="save">Collective impact: ~2.5–3.5 hrs/week returned per onboarding analyst · ~2 hrs saved per new distributor on ticket generation</div>
           <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
         </a>
@@ -246,14 +246,15 @@
           <p>A standalone AI agent that cuts app-store screenshot generation from 2–3 hours to 15 minutes. One command: log in, screenshot 6 pages at 3 device sizes, composite into store-ready frames, create a Jira ticket. Highlighted by the CEO in a company-wide email.</p>
           <div class="save">2–3 hrs → 15 min per distributor release</div>
         </div>
-        <div class="ai-item full">
+        <a href="/case-pm-agent/" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
           <div class="h">
             <span class="name">FDE PM Agent (Obvious)</span>
             <span class="tag">team-facing · in production</span>
           </div>
           <p>A team-facing PM agent that turns Slack chatter and Jira tickets into specced work for the FDE Platform. It subscribes to the team's Slack channels and a Jira webhook, self-classifies whether each message is a real work request (silent if not, even when @mentioned), grounds in current product behavior, runs one clarifying question at a time in-thread, and proposes 2–3 approaches with PM-language trade-offs. Hard gate: it only writes the Specification Document after explicit human approval — then links the spec on Jira, transitions the ticket to PRD, and stays in-thread for follow-ups. Never writes code, opens PRs, or merges.</p>
           <div class="save">Built on Obvious, an AI agent platform with built-in Slack/Jira integrations — intake discipline, spec workflow, and orchestration are mine; Obvious provides the agent runtime and MCPs</div>
-        </div>
+          <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
+        </a>
       </div>
     </div>
   </section>
