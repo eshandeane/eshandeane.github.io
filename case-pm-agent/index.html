@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDE PM Agent on Obvious: a team-facing discovery + spec agent - Eshan Deane</title>
+  <meta name="description" content="A team-facing PM agent on Obvious for the FDE Platform. Subscribes to Slack and a Jira webhook, classifies whether messages are real work requests, runs PM discovery in-thread, and writes the spec only after an explicit human gate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand"><span class="dot"></span>Eshan Deane</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#impact">Needle Movers</a>
+        <a href="/#ai">AI in Production</a>
+        <a href="/#agents">Agent Workforce</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <section class="case-hero">
+    <div class="container">
+      <a href="/#agents" class="back-link">← Back to work</a>
+      <p class="eyebrow">Case study · Team-facing agent</p>
+      <h1>A team-facing PM agent on Obvious that turns Slack chatter into specced work</h1>
+      <p class="sub">FDE Platform product requests lived in Slack threads and stalled Jira tickets without consistent clarification or spec discipline. I built a team-facing PM agent on Obvious that subscribes to the team's Slack channels and a Jira webhook, classifies whether each message is a real work request, runs PM-shape discovery in-thread, and writes the Specification Document only after an explicit human approval. The agent's lane is discovery → clarification → documentation. It never writes code, opens PRs, or merges.</p>
+    </div>
+  </section>
+
+  <div class="result-band">
+    <div class="container">
+      <div class="result-grid">
+        <div class="r"><span class="num">2</span><span class="lbl">sub-agent phases: an intake agent that confirms the work type, then a specification agent that writes the doc</span></div>
+        <div class="r"><span class="num">5</span><span class="lbl">required sections in every spec: problem, user stories, acceptance criteria, out of scope, open questions</span></div>
+        <div class="r"><span class="num">0</span><span class="lbl">lines of code, PRs, or merges by the agent - the constraint is the product</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <div class="container-narrow">
+      <h2>Why discovery was the bottleneck</h2>
+      <p>Product requests for the FDE Platform arrived as Slack messages, Jira tickets, and side-of-desk pings - often without clear scope, named users, or success criteria. Engineering would either build the wrong thing or stall waiting on clarification. The bottleneck wasn't writing the spec; it was the discipline of running the discovery loop before the spec is worth writing.</p>
+
+      <h2>What I built</h2>
+      <p>A team-facing agent on Obvious - an AI agent platform with built-in Slack and Jira integrations - that operates the PM discovery discipline at scale. It wakes on two triggers and runs a two-phase sub-agent architecture, with the spec written only after a human says yes.</p>
+
+      <h3>Triggers and silent gating</h3>
+      <p>The agent subscribes to the FDE Slack channels and a Jira webhook on tickets transitioning to <em>Design</em>. On every Slack wake, the first step is a binary classification: <em>is this a real work request?</em> If not, the agent stays silent - even when @mentioned. A mention attached to general chatter, an opinion question, or a tooling discussion is still a no-op. No reactions, no "want me to spec this?" follow-ups, no explanation of why it's quiet. Silence is the right behavior, and stating it explicitly in the operating spec is what makes it reliable.</p>
+
+      <h3>Two sub-agent phases</h3>
+      <p>The orchestrator never asks clarifying questions itself. For Slack-originated work, it spawns an <strong>intake sub-agent</strong> first: confirm whether this is a feature, task, or bug, and ask enough clarifying questions to support the next phase. No Jira ticket, no Obvious project, no spec is created during intake. Only after intake confirms does the orchestrator create or link the Jira ticket, create the dedicated Obvious project, and spawn the <strong>specification sub-agent</strong> with the full context to write the doc.</p>
+
+      <h3>Step 0 - ground in current product behavior</h3>
+      <p>Before the spec sub-agent asks a single clarifying question, it must ground itself in how the relevant part of FDE works <em>today</em>. It reads the platform feature docs, consults the FDE product bibliography, and reads the actual code - components, services, routes - relevant to the feature area. This step is read-only. Nothing technical lands in the spec output (no file paths, no type names, no library choices); the goal is understanding, not narration. Skipping Step 0 is the single most common quality failure for spec-writing agents.</p>
+
+      <h3>Discovery in-thread, one question at a time</h3>
+      <p>Discovery happens in the originating Slack thread, one question at a time. The agent asks who the feature is for in the user's own words ("warehouse manager", not "internal user"), what they do today, what changes for them, where they encounter it, and what success looks like. Plain product language only. Never asks about DB schema, API endpoints, component names, or build estimates. Four to six exchanges is usually enough.</p>
+
+      <h3>Propose 2–3 approaches, then the hard gate</h3>
+      <p>Once discovery is complete, the agent proposes two or three ways to address the request - with PM-language trade-offs ("faster to ship" vs "more flexible later", "simpler for the user" vs "more powerful"), never technical trade-offs - and a recommendation. When the requester picks an approach, the agent reads back a plain-English design summary and asks: <em>"Should I write this up as the Product Spec? (yes / change something / step back)"</em></p>
+      <div class="callout">
+        <div class="k">The hard gate</div>
+        <p>The agent does not write the spec until the requester explicitly approves. If they say "change X", it loops back to discovery or approaches. This is the one chance to align before the spec - and every downstream phase - proceeds on the wrong understanding. The gate is the product.</p>
+      </div>
+
+      <h3>The Specification Document</h3>
+      <p>Only after approval, the spec sub-agent creates a structured document inside the dedicated Obvious project, named <em>Product Spec: [Feature Name]</em>. Every spec has the same five sections: <strong>Problem Statement</strong> (who has it, why it matters), <strong>User Stories</strong> ("As a X, I want Y so that Z"), <strong>Acceptance Criteria</strong> (Given/When/Then where useful - the contract for engineering and testing), <strong>Out of Scope</strong> (what this does <em>not</em> cover), and <strong>Open Questions</strong>. The spec link gets posted back in the Slack thread and added as a Jira comment, and the Jira ticket transitions to PRD.</p>
+
+      <h3>Handoff lifecycle through Jira</h3>
+      <p>The agent ushers each request through Jira status with explicit human checkpoints. When a human says "go ahead," it transitions the ticket to Build. When a build is ready for testing, it posts the staging link and credentials in the originating thread, @mentioning me for review. When the PR is ready for code review, it @mentions the reviewer in-thread, DMs them so it doesn't get missed, and transitions the ticket to Code Review. The agent never transitions status on its own authority - every transition is tied to a human signal in-thread.</p>
+
+      <div class="callout">
+        <div class="k">Hard constraints - non-negotiable</div>
+        <p>The agent must not write code, create pull requests, or merge any branch - unless a human explicitly instructs it to in-thread. Read-only codebase access is allowed (for Step 0 grounding); anything beyond that requires explicit authorization. The agent does not infer permission from enthusiasm, display names, or implied urgency. When in doubt, it stays in the PM lane and asks. The constraint isn't a guardrail bolted on - it's what defines the agent's job.</p>
+      </div>
+
+      <h2>Stack</h2>
+      <div class="stack-list">
+        <span class="chip-plain">Obvious (AI agent platform)</span>
+        <span class="chip-plain">Slack MCP (channel subscription + thread replies)</span>
+        <span class="chip-plain">Jira MCP (webhook on Design transition, ticket sync, status transitions)</span>
+        <span class="chip-plain">FDE platform repo (read-only for Step 0 grounding)</span>
+        <span class="chip-plain">Two-phase sub-agent orchestration</span>
+      </div>
+      <p>Built on Obvious's agent runtime and MCP connections. The intake discipline, spec workflow, two-phase architecture, and handoff lifecycle are mine; Obvious provides the platform underneath.</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>The PM job is the discipline of <em>not</em> doing things.</strong> Don't reply to chatter. Don't write the spec before discovery is done. Don't move Jira without a human signal. Encoding those "don'ts" explicitly in the operating spec is what makes the agent feel like a PM teammate, not a Slack bot.</li>
+        <li><strong>Silent gating is harder to ship than it sounds.</strong> The default for most agents is to respond when addressed. Building one that stays quiet even when @mentioned - and only speaks when there's real work to do - took an explicit, binary classification step as the first action on every wake.</li>
+        <li><strong>The hard gate is the product.</strong> The single most valuable line in the operating spec is "do not write the spec until the requester explicitly approves." It's the one chance to align before downstream work compounds the wrong understanding.</li>
+        <li><strong>Ground first, ask second.</strong> A spec sub-agent that skips Step 0 produces specs that miss existing functionality. Asking the requester questions the agent could have answered itself - by reading the docs and the code - wastes their time and undermines trust.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-next">
+    <div class="container-narrow">
+      <div class="lbl">Next case</div>
+      <a href="/case-ai-features/">5 AI features shipped in the platform →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-blk">
+          <div class="n">Eshan Deane</div>
+          <div class="t">Builder PM · Ships AI in production</div>
+        </div>
+        <div class="links">
+          <a href="/#impact">Needle Movers</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://www.linkedin.com/in/eshan-deane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/eshandeane" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:eshandeane@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>
