@@ -61,8 +61,8 @@
       <h2>4 · Jira ticket generation</h2>
       <p>After sign-off, a three-phase AI pipeline parses the spec into categories, generates tickets per category using domain-specific prompts, and persists them as reviewable drafts. Managers approve, edit, or reject individual tickets before a batch export to Jira with parallel execution and relevant data files attached - replacing the manual creation of 30–80 tickets per account.</p>
 
-      <h2>5 · Weekly update drafting - built and shipped solo, end-to-end</h2>
-      <p>This one I owned entirely: spec, prompt design, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
+      <h2>5 · Weekly update drafting - prompt design + UX on existing rails</h2>
+      <p>Here I owned the prompt design and the user-side behavior; meeting ingestion was already running from the matching feature. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>Usage in production</h2>
       <p>The AI PM work isn't shipping AI — it's shipping AI that real users actually adopt. Every feature is instrumented in PostHog so I can see whether analysts are reaching for it, and which ones stuck.</p>
@@ -72,7 +72,7 @@
         <tbody>
           <tr><td>Ask FDE (RAG Q&amp;A)</td><td>2 events (January) → 308 (April)</td><td>31</td></tr>
           <tr><td>Meeting matching</td><td>95 events (March) → 134 (June)</td><td>31</td></tr>
-          <tr><td>Weekly updates (solo-built)</td><td>24 events (May, launched 05/18/26) → 245 (June)</td><td>9</td></tr>
+          <tr><td>Weekly updates (prompt + UX)</td><td>24 events (May, launched 05/18/26) → 245 (June)</td><td>9</td></tr>
           <tr><td>Spec generation</td><td>Per-distributor cadence; 15 generations across 6 analysts in last 90 days</td><td>6</td></tr>
           <tr><td>Jira tickets</td><td>Per-distributor cadence; 33 ticket-batch runs across 7 managers in last 90 days</td><td>7</td></tr>
         </tbody>
