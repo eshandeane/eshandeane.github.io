@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eshan Deane - Builder PM | Ships AI in Production</title>
-  <meta name="description" content="Builder PM who ships AI in production and writes code alongside engineering. Owns the full AI feature lifecycle: prompt design, evals, deployed code. 8 years in product, 14 in tech." />
+  <meta name="description" content="Builder PM who ships AI in production and writes code alongside engineering. Owns the full AI feature lifecycle: prompt design, deployed code, adoption tracked in PostHog. 8 years in product, 14 in tech." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -32,7 +32,7 @@
       <div class="hero-text">
         <p class="eyebrow name">Senior Product Manager · 8 yrs in product · 14 yrs in tech</p>
         <h1>Builder PM who writes code and ships AI features and agents in production</h1>
-        <p class="positioning">I spec AI features, write the prompts, run the evals, and ship the code - owning the full cycle from prompt design through evals to deployed feature.</p>
+        <p class="positioning">I spec AI features, write the prompts, ship the code, and track adoption - owning the full cycle from prompt design to deployed feature to whether real users actually reach for it.</p>
         <div class="btn-row">
           <a href="/#impact" class="btn">View the work</a>
           <a href="/contact/" class="btn btn-ghost">Get in touch</a>
@@ -60,7 +60,7 @@
         </div>
         <div class="stat">
           <span class="num">5</span>
-          <span class="lbl">AI features shipped to production, covered by an LLM-as-Judge eval pipeline</span>
+          <span class="lbl">AI features shipped to production · ~26x usage growth across the analyst team in 6 months (PostHog)</span>
         </div>
         <div class="stat">
           <span class="num">40%</span>
@@ -68,7 +68,7 @@
         </div>
         <div class="stat">
           <span class="num">$72.7K<span style="font-size:1rem;color:var(--muted-2);font-weight:500">/mo</span></span>
-          <span class="lbl">MRR across 34 live distributor accounts</span>
+          <span class="lbl">MRR across 34 live distributor accounts launched</span>
         </div>
         <div class="stat">
           <span class="num">$5.32M</span>
@@ -173,28 +173,28 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">02 · AI in Production</p>
-        <h2>Features real users touch, covered by evals</h2>
-        <p>Five AI features shipped into the platform for end users, plus the eval pipeline that measures them. Every AI output is reviewable - accept, edit, dismiss.</p>
+        <h2>Features real users touch, with growing adoption</h2>
+        <p>Five AI features shipped into the platform for end users, instrumented in PostHog so adoption is visible, not assumed. Every AI output is reviewable - accept, edit, dismiss.</p>
       </div>
 
       <div class="ai-grid">
         <a href="/case-ai-features/" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
           <div class="h">
             <span class="name">5 AI features in the onboarding platform</span>
-            <span class="tag">RAG · evals · prompt design</span>
+            <span class="tag">RAG · prompt design · in production</span>
           </div>
-          <p>Ask FDE (RAG-powered Q&amp;A over specs and meetings, with source citations), meeting-to-account matching, spec generation, Jira ticket creation, and weekly update drafting. The weekly-update feature I built and shipped solo, end-to-end - spec, prompt design, evals, UI, and deployed code. An LLM-as-Judge pipeline surfaced that the RAG assistant's grounding averaged 46.7%, driven by open-ended summary prompts scoring 0–40% versus 95%+ on specific questions; I prioritized the citation prompt fix.</p>
+          <p>Ask FDE (RAG-powered Q&amp;A over specs and meetings, with source citations), meeting-to-account matching, spec generation, Jira ticket creation, and weekly update drafting. The weekly-update feature I built and shipped solo, end-to-end - spec, prompt design, UI, and deployed code. Each feature came from a bottleneck I hit during 34 manual onboardings, and each one keeps a human control: accept, edit, dismiss.</p>
           <div class="save">Collective impact: 5–7 hrs/week returned per onboarding analyst · ~4 hrs saved per new distributor on spec + ticket generation</div>
           <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
         </a>
 
         <a href="/case-ai-features/" class="ai-item full" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
           <div class="h">
-            <span class="name">LLM-as-Judge eval pipeline</span>
-            <span class="tag">evals · hallucination detection</span>
+            <span class="name">Adoption across the analyst team</span>
+            <span class="tag">PostHog · in production</span>
           </div>
-          <p>Designed an eval pipeline across all 5 AI features that turned grounding into a measurable, monitorable metric - catching where a RAG assistant looked fine in a demo but failed on open-ended prompts. This is the AI PM discipline: not shipping AI, but knowing when it's wrong.</p>
-          <div class="save">46.7% grounding surfaced → citation fix prioritized · baselines for the other 4 features at 06/04/26, 30-day cadence</div>
+          <p>Combined usage across the five features grew ~26x in 6 months - from 19 events in January 2026 to 497 by 06/26/26, with 4 days still pending in the month. Ask FDE ramped from 2 events in January to 308 in April across 31 unique analysts. The weekly-update feature I built solo went from 24 events in its launch fortnight to 245 a month later. Three of the five features are now part of the analyst team's daily workflow.</p>
+          <div class="save">Tracked in PostHog · 37 unique monthly analysts at peak · ~500 AI events/mo sustained</div>
           <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
         </a>
       </div>
@@ -204,8 +204,8 @@
         <span class="chip-plain">Cursor</span>
         <span class="chip-plain">Multi-agent orchestration</span>
         <span class="chip-plain">RAG</span>
-        <span class="chip-plain">LLM-as-Judge evals</span>
-        <span class="chip-plain">Hallucination detection</span>
+        <span class="chip-plain">PostHog instrumentation</span>
+        <span class="chip-plain">Adoption tracking</span>
         <span class="chip-plain">Prompt orchestration</span>
         <span class="chip-plain">Langflow</span>
         <span class="chip-plain">Langfuse</span>
@@ -264,7 +264,7 @@
           <div class="when">2026 – Present</div>
           <div class="what">
             <h4>Senior Product Manager · Cut+Dry (Series B, B2B SaaS)</h4>
-            <p>Built the 5-agent delivery pipeline around an autonomous coding engine, scaled the AI onboarding platform, and designed the LLM-as-Judge eval pipeline across all 5 AI features.</p>
+            <p>Built the 5-agent delivery pipeline around an autonomous coding engine, scaled the AI onboarding platform, and drove ~26x usage growth across the 5 shipped AI features in 6 months.</p>
           </div>
         </div>
         <div class="bg-row">

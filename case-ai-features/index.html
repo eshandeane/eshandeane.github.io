@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5 AI Features Shipped in the Platform - Eshan Deane</title>
-  <meta name="description" content="Five production AI features - RAG Q&A, meeting matching, spec generation, Jira ticket creation, weekly update drafting - covered by an LLM-as-Judge eval pipeline in Langfuse." />
+  <meta name="description" content="Five production AI features - RAG Q&A, meeting matching, spec generation, Jira ticket creation, weekly update drafting - with ~26x usage growth across the analyst team in 6 months." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -39,7 +39,7 @@
       <div class="result-grid">
         <div class="r"><span class="num">5–7 hrs<span class="from" style="font-size:1rem">/wk</span></span><span class="lbl">returned per onboarding analyst</span></div>
         <div class="r"><span class="num">~4 hrs</span><span class="lbl">saved per new distributor on spec + tickets</span></div>
-        <div class="r"><span class="num">46.7%</span><span class="lbl">RAG grounding surfaced by the eval pipeline → citation fix prioritized</span></div>
+        <div class="r"><span class="num">~26x</span><span class="lbl">AI feature usage growth in 6 months (PostHog, 01/01/26 → 06/26/26)</span></div>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
   <div class="prose">
     <div class="container-narrow">
       <h2>The throughline</h2>
-      <p>The time lost searching transcripts, the hours writing specs and tickets, the context that died in meeting recordings - these shaped what I built and why. All five features are covered by an LLM-as-Judge eval pipeline in Langfuse, with Langfuse telemetry for production monitoring.</p>
+      <p>The time lost searching transcripts, the hours writing specs and tickets, the context that died in meeting recordings - these shaped what I built and why. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
 
       <h2>1 · Ask FDE - RAG-powered workspace Q&amp;A</h2>
       <p>Onboarding analysts run 5–6 back-to-back calls daily across 10–17 concurrent accounts. Between calls, answering "what's blocking this account right now?" used to mean switching between Circleback transcripts, the spec document, and Jira. Ask FDE is a conversational assistant embedded in each workspace, grounded in three sources - the specification, uploaded meeting transcripts, and synced Jira tickets - using a per-workspace semantic search store. Every answer carries source citations so users see exactly which meeting, spec section, or ticket it came from, and it degrades gracefully to spec-only context before meetings are uploaded.</p>
@@ -62,28 +62,30 @@
       <p>After sign-off, a three-phase AI pipeline parses the spec into categories, generates tickets per category using domain-specific prompts, and persists them as reviewable drafts. Managers approve, edit, or reject individual tickets before a batch export to Jira with parallel execution and relevant data files attached - replacing the manual creation of 30–80 tickets per account.</p>
 
       <h2>5 · Weekly update drafting - built and shipped solo, end-to-end</h2>
-      <p>This one I owned entirely: spec, prompt design, evals, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
+      <p>This one I owned entirely: spec, prompt design, UI, and deployed code. Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
-      <h2>The eval discipline</h2>
-      <p>The AI PM work isn't shipping AI - it's knowing when it's wrong. I designed an LLM-as-Judge eval pipeline across all five features, with Claude Haiku 4.5 as the judge model. Each feature has its own dimensions tied to its specific failure modes: grounding for the RAG-style features, completeness for spec generation, calibration for the matching feature, and so on. Scores are written back to the Langfuse trace they evaluated and snapshotted as dated markdown reports.</p>
-      <p>The Ask FDE eval surfaced that the RAG assistant's grounding averaged 46.7%. The eval broke the number down: open-ended summary prompts were scoring 0–40%, while specific questions scored 95%+. That diagnosis pointed straight at the fix - I prioritized a citation prompt change rather than a broad model swap.</p>
-      <p>Baseline run 06/04/26 across the other four features:</p>
+      <h2>Usage in production</h2>
+      <p>The AI PM work isn't shipping AI — it's shipping AI that real users actually adopt. Every feature is instrumented in PostHog so I can see whether analysts are reaching for it, and which ones stuck.</p>
+      <p>Combined usage across the five features grew ~26x in 6 months — from 19 events in January 2026 to 497 by 06/26/26, with 4 days still to come in the month. Monthly active analysts on AI features went from 4 to 37 over the same window.</p>
       <table class="dtable">
-        <thead><tr><th>Feature</th><th>Headline dimension</th><th>Score</th><th>Target</th></tr></thead>
+        <thead><tr><th>Feature</th><th>First month → latest month</th><th>Peak unique analysts</th></tr></thead>
         <tbody>
-          <tr><td>Specification</td><td>Completeness (7 sub-categories)</td><td>41.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Jira Tickets</td><td>Relevance (7 sub-categories)</td><td>31.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Meeting Matching</td><td>Reasoning Quality</td><td>59.0%</td><td>≥85.0%</td></tr>
-          <tr><td>Control Tower</td><td>Grounding</td><td>45.0%</td><td>≥85.0%</td></tr>
+          <tr><td>Ask FDE (RAG Q&amp;A)</td><td>2 events (January) → 308 (April)</td><td>31</td></tr>
+          <tr><td>Meeting matching</td><td>95 events (March) → 134 (June)</td><td>31</td></tr>
+          <tr><td>Weekly updates (solo-built)</td><td>24 events (May, launched 05/18/26) → 245 (June)</td><td>9</td></tr>
+          <tr><td>Spec generation</td><td>Per-distributor cadence; 15 generations across 6 analysts in last 90 days</td><td>6</td></tr>
+          <tr><td>Jira tickets</td><td>Per-distributor cadence; 33 ticket-batch runs across 7 managers in last 90 days</td><td>7</td></tr>
         </tbody>
       </table>
-      <p>Most baselines are well below their ≥85.0% target. That's expected for a first baseline on internal-facing tooling: the eval is a diagnostic instrument that surfaces where each feature is currently falling short, not a marketing artifact. Cadence is 30 days going forward.</p>
-      <p>Full methodology and per-feature breakdown: <a href="https://github.com/eshandeane/shipping-ai-with-evals" target="_blank" rel="noopener">shipping-ai-with-evals</a>.</p>
+      <p>Three of the five (Ask FDE, meeting matching, weekly updates) are now part of the analyst team's daily workflow. The other two (spec, tickets) fire per new distributor, which is the right cadence for what they do.</p>
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
-        <p>An average grounding number looks like a model problem. The eval pipeline turned it into a prompt problem with a known cause and a cheap fix. That's the difference between speccing AI features and owning them.</p>
+        <p>A lot of AI demos look great and then die on contact with real users. The instrumentation is what lets me say "this one's working, this one isn't" with evidence — and prioritize from there.</p>
       </div>
+
+      <h2>One-time eval diagnostic</h2>
+      <p>Before scaling Ask FDE, I ran a one-time LLM-as-Judge diagnostic (Claude Haiku 4.5 as the judge model) to check grounding before users hit edge cases. It surfaced that the RAG assistant's grounding averaged 46.7%, with open-ended summary prompts scoring 0–40% and specific questions scoring 95%+. That diagnosis pointed straight at the fix — I prioritized a citation prompt change rather than a broad model swap. I haven't kept the eval pipeline on a recurring cadence since; the priority shifted to instrumentation and shipping the remaining features.</p>
 
       <h2>Time returned per analyst</h2>
       <table class="dtable">
@@ -101,7 +103,7 @@
       <h2>Stack</h2>
       <div class="stack-list">
         <span class="chip-plain">RAG / semantic search</span>
-        <span class="chip-plain">LLM-as-Judge evals</span>
+        <span class="chip-plain">PostHog</span>
         <span class="chip-plain">Langfuse</span>
         <span class="chip-plain">Prompt orchestration</span>
         <span class="chip-plain">Circleback / Fathom webhooks</span>
