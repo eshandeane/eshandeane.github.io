@@ -47,7 +47,7 @@
   <div class="prose">
     <div class="container-narrow">
       <h2>The throughline</h2>
-      <p>The time lost searching transcripts, the hours writing tickets, the context that died in meeting recordings - these shaped what I built and why. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss controls) on the three features below; engineering owned the underlying data-ingestion rails. I was also PM on two more AI features in the platform — meeting matching and spec generation — where I owned requirements and testing while engineering owned the build; this case study covers the three I shipped end-to-end. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
+      <p>The time lost searching transcripts, the hours writing tickets, the context that died in meeting recordings - these shaped what I built and why. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss controls) on the three features below; engineering owned the underlying data-ingestion rails. I was also PM on two more AI features in the platform - meeting matching and spec generation - where I owned requirements and testing while engineering owned the build; this case study covers the three I shipped end-to-end. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
 
       <h2>1 · Ask FDE - RAG-powered workspace Q&amp;A</h2>
       <p>Onboarding analysts run 5–6 back-to-back calls daily across 10–17 concurrent accounts. Between calls, answering "what's blocking this account right now?" used to mean switching between Circleback transcripts, the spec document, and Jira. Ask FDE is a conversational assistant embedded in each workspace, grounded in three sources - the specification, uploaded meeting transcripts, and synced Jira tickets - using a per-workspace semantic search store. Every answer carries source citations so users see exactly which meeting, spec section, or ticket it came from, and it degrades gracefully to spec-only context before meetings are uploaded.</p>
@@ -59,8 +59,8 @@
       <p>Writing weekly updates across 10–17 accounts was a top pain point - one senior manager did it on weekends because there was no time during the week. Now an AI draft is generated automatically when a meeting is approved, answering the team's standard five-question format and grounded in the transcript. Three affordances: post as-is, edit, or dismiss. An earlier version over-dramatized issues ("AI will pick up one thing and call it a critical blocker"), so I redesigned the prompts around evidence grounding, not inference.</p>
 
       <h2>Usage in production</h2>
-      <p>The AI PM work isn't shipping AI — it's shipping AI that real users actually adopt. Every feature is instrumented in PostHog so I can see whether analysts are reaching for it, and which ones stuck.</p>
-      <p>Combined usage across the three features I shipped grew ~51x in 6 months — from 7 events in January 2026 to 357 by 06/26/26, with 4 days still to come in the month. Monthly active analysts on these features went from 1 to 32 over the same window.</p>
+      <p>The AI PM work isn't shipping AI. It's shipping AI that real users actually adopt. Every feature is instrumented in PostHog so I can see whether analysts are reaching for it, and which ones stuck.</p>
+      <p>Combined usage across the three features I shipped grew ~51x in 6 months: from 7 events in January 2026 to 357 by 06/26/26, with 4 days still to come in the month. Monthly active analysts on these features went from 1 to 32 over the same window.</p>
       <table class="dtable">
         <thead><tr><th>Feature</th><th>First month → latest month</th><th>Peak unique analysts</th></tr></thead>
         <tbody>
@@ -73,11 +73,11 @@
 
       <div class="callout">
         <div class="k">Why this matters for an AI PM role</div>
-        <p>A lot of AI demos look great and then die on contact with real users. The instrumentation is what lets me say "this one's working, this one isn't" with evidence — and prioritize from there.</p>
+        <p>A lot of AI demos look great and then die on contact with real users. The instrumentation is what lets me say "this one's working, this one isn't" with evidence, and prioritize from there.</p>
       </div>
 
       <h2>One-time eval diagnostic</h2>
-      <p>Before scaling Ask FDE, I ran a one-time LLM-as-Judge diagnostic (Claude Haiku 4.5 as the judge model) to check grounding before users hit edge cases. It surfaced that the RAG assistant's grounding averaged 46.7%, with open-ended summary prompts scoring 0–40% and specific questions scoring 95%+. That diagnosis pointed straight at the fix — I prioritized a citation prompt change rather than a broad model swap. I haven't kept the eval pipeline on a recurring cadence since; the priority shifted to instrumentation and shipping the remaining features.</p>
+      <p>Before scaling Ask FDE, I ran a one-time LLM-as-Judge diagnostic (Claude Haiku 4.5 as the judge model) to check grounding before users hit edge cases. It surfaced that the RAG assistant's grounding averaged 46.7%, with open-ended summary prompts scoring 0–40% and specific questions scoring 95%+. That diagnosis pointed straight at the fix: I prioritized a citation prompt change rather than a broad model swap. I haven't kept the eval pipeline on a recurring cadence since; the priority shifted to instrumentation and shipping the remaining features.</p>
 
       <h2>Time returned per analyst</h2>
       <table class="dtable">
