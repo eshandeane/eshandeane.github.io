@@ -76,8 +76,22 @@
         <p>A lot of AI demos look great and then die on contact with real users. The instrumentation is what lets me say "this one's working, this one isn't" with evidence, and prioritize from there.</p>
       </div>
 
-      <h2>One-time eval diagnostic</h2>
-      <p>Before scaling Ask FDE, I ran a one-time LLM-as-Judge diagnostic (Claude Haiku 4.5 as the judge model) to check grounding before users hit edge cases. It surfaced that the RAG assistant's grounding averaged 46.7%, with open-ended summary prompts scoring 0–40% and specific questions scoring 95%+. That diagnosis pointed straight at the fix: I prioritized a citation prompt change rather than a broad model swap. I haven't kept the eval pipeline on a recurring cadence since; the priority shifted to instrumentation and shipping the remaining features.</p>
+      <h2>Evals: calibrating the eval before trusting the numbers</h2>
+      <p>I wrote an LLM-as-Judge eval script for Ask FDE using Claude Code, informed by eval methodology I'd studied. The judge was Claude Haiku 4.5, scoring production traces on two dimensions - Grounding (are factual claims traceable to retrieved tool outputs?) and Relevance (does the response answer the question?) - with targets of 88% and 92% respectively.</p>
+      <p>The first run returned suspicious numbers: 46.7% grounding, 99% relevance. High relevance with low grounding is a red flag - it means the model is answering confidently from sources it doesn't have. I investigated and found two methodology bugs that made the numbers uninterpretable.</p>
+      <p><strong>Bug 1: Context truncation.</strong> The eval was capping total tool call output at 12,000 chars before passing it to the judge. Ask FDE routinely makes 20+ tool calls per trace; actual retrieved content ran 60,000+ chars. The judge was seeing 3 of 23 tool calls and scoring everything else as unsupported. Traces with rich retrieval were being unfairly penalized.</p>
+      <p><strong>Bug 2: Temperature not set.</strong> The judge was running at default temperature (~1.0), making scores non-reproducible. The same input produced scores swinging 90 points across runs. The 46.7% grounding and 99% relevance numbers from the first run were both artifacts of the methodology, not the feature.</p>
+      <p>I fixed both bugs, re-ran the April traces to get a valid baseline, then ran June traces to check for drift. The calibrated results told a different story:</p>
+      <table class="dtable">
+        <thead><tr><th>Period</th><th>Grounding</th><th>Relevance</th><th>Traces</th></tr></thead>
+        <tbody>
+          <tr><td>April 2026</td><td>75.0%</td><td>90.0%</td><td>30</td></tr>
+          <tr><td>June 2026</td><td>60.0%</td><td>81.0%</td><td>30</td></tr>
+          <tr><td>Change</td><td>-15.0 pts</td><td>-9.0 pts</td><td>-</td></tr>
+        </tbody>
+      </table>
+      <p>A 15-point grounding regression, surfaced cold - before it appeared in any user feedback. I traced it to three root causes: a new usage pattern (analysts asking Ask FDE to draft emails and Slack messages - responses that sound right but invent action items not in any meeting); a retrieval strategy issue (the model calling search instead of read, then authoring detailed summaries beyond what the excerpts contained); and persistent product knowledge hallucination when retrieved context is thin. All three are fixable in the system prompt and tool call behavior without a model change.</p>
+      <p>I ran this once. The priority then shifted to shipping the remaining features and maintaining PostHog instrumentation. But the eval is calibrated and the script exists - running it again is a single command.</p>
 
       <h2>Time returned per analyst</h2>
       <table class="dtable">
