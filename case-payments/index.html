@@ -53,7 +53,8 @@
       <p>As Proxy Product Owner I owned the CAKE POS payment gateway end-to-end: identifying issues through support data, coordinating with third-party processors, and shipping improvements. Over the role I doubled the number of payment gateway users and grew revenue 120% ($40M).</p>
 
       <h2>Fixing the chargeback workflow</h2>
-      <p>The clearest example of how operations fed product: I studied how the chargeback process actually worked, traced the root cause to a broken investigation workflow, and rebuilt the tool with engineering to fix it. The result was $50,000/month in savings - a problem that was only visible because I'd lived in the support data first.</p>
+      <p>I noticed an unusual number of chargebacks being lost and started digging. The root cause wasn't a volume problem or slow response times - it was a design mismatch. The statuses the third-party processor sent for chargeback state changes weren't being interpreted correctly by the internal system. The internal workflow didn't map to how chargebacks actually work in the US. Cases were being mishandled at each status transition, and winnable disputes were being abandoned as a result.</p>
+      <p>I studied how the chargeback process actually worked end-to-end - the status lifecycle, the evidence windows, the processor's expectations at each stage - and redesigned the entire chargeback handling system at CAKE to match it. The $50K/month in savings came from winning chargebacks that had previously been abandoned: cases that were defensible but were being lost because the system was misreading where each dispute stood.</p>
 
       <div class="callout">
         <div class="k">Why this still matters</div>

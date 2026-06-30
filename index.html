@@ -154,7 +154,7 @@
         <a href="/case-payments/" class="case-card">
           <span class="idx">04</span>
           <h3>Payment gateway at Sysco LABS (CAKE POS)</h3>
-          <p>Owned the CAKE POS payment gateway as Proxy Product Owner, building on 5 years in operations and support on the same product. Diagnosed a broken chargeback investigation workflow from support data and rebuilt the tool with engineering.</p>
+          <p>Owned the CAKE POS payment gateway as Proxy Product Owner. Five years in operations and support on the same product meant I was in the ticket data before I was in the roadmap. The clearest output: I noticed an unusual number of chargebacks being lost, traced it to a design mismatch between the internal workflow and how the third-party processor actually handles US chargebacks, and redesigned the entire system. Winnable cases had been abandoned because the system was misreading dispute status. Fixing it saved $50K/month.</p>
           <div class="metrics">
             <span class="chip">+120% revenue ($40M)</span>
             <span class="chip">2× users</span>
@@ -221,8 +221,8 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">03 · How I Ship</p>
-        <h2>Tools I built to accelerate my own delivery</h2>
-        <p>The same operate-then-automate discipline applied to my own workflow: agents handle the artifact work so my time goes to discovery, design, and judgment calls.</p>
+        <h2>Agents I built that are in production or flagged as model AI wins</h2>
+        <p>The same operate-then-automate discipline applied to delivery: one agent is team-facing and in production with hard gates to prevent code writes or PR opens; another was flagged internally as a model AI-adoption win. A third wraps the full delivery cycle in a 5-agent pipeline.</p>
       </div>
       <div class="cases">
         <a href="/case-pipeline/" class="case-card">
@@ -252,7 +252,7 @@
             <span class="name">FDE PM Agent (Obvious)</span>
             <span class="tag">team-facing · in production</span>
           </div>
-          <p>A team-facing PM agent that turns Slack chatter and Jira tickets into specced work for the FDE Platform. It subscribes to the team's Slack channels and a Jira webhook, self-classifies whether each message is a real work request (silent if not, even when @mentioned), grounds in current product behavior, runs one clarifying question at a time in-thread, and proposes 2–3 approaches with PM-language trade-offs. Hard gate: it only writes the Specification Document after explicit human approval — then links the spec on Jira, transitions the ticket to PRD, and stays in-thread for follow-ups. Never writes code, opens PRs, or merges.</p>
+          <p>A team-facing PM agent that turns Slack chatter and Jira tickets into specced work for the FDE Platform. It subscribes to the team's Slack channels and a Jira webhook, self-classifies whether each message is a real work request (silent if not, even when @mentioned), grounds in current product behavior, runs one clarifying question at a time in-thread, and proposes 2–3 approaches with PM-language trade-offs. Hard gate: it only writes the Specification Document after explicit human approval. Then it links the spec on Jira, transitions the ticket to PRD, and stays in-thread for follow-ups. Never writes code, opens PRs, or merges.</p>
           <div class="save">Built on Obvious, an AI agent platform with built-in Slack/Jira integrations - intake discipline, spec workflow, and orchestration are mine; Obvious provides the agent runtime and MCPs</div>
           <span class="more" style="display:inline-block; margin-top:14px;">Read case study <span class="arr">→</span></span>
         </a>
