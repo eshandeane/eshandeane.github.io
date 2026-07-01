@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3 AI Features I Shipped in the Platform - Eshan Deane</title>
+  <title>5 AI Features I Owned in the Platform - Eshan Deane</title>
   <meta name="description" content="Three production AI features I shipped on engineering-built rails - Ask FDE (RAG Q&A), Jira ticket creation, and weekly update drafting - with ~51x usage growth across the analyst team in 6 months." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,8 +29,8 @@
     <div class="container">
       <a href="/#impact" class="back-link">← Back to work</a>
       <p class="eyebrow">Case study 04 · AI in the product</p>
-      <h1>3 AI features I shipped in the onboarding platform</h1>
-      <p class="sub">Not just using AI to build faster - building AI into the product for end users. I owned the prompt design and the user-side behavior on three features (Ask FDE, Jira ticket creation, weekly update drafting), built on data-ingestion rails engineering put in place. I was also PM on two more (meeting matching, spec generation) where engineering owned the build. Each feature came from a bottleneck I hit during 34 manual onboardings, and each AI output keeps a human control: accept, edit, or dismiss.</p>
+      <h1>5 AI features I owned in the onboarding platform</h1>
+      <p class="sub">Not just using AI to build faster - building AI into the product for end users. I owned all five features end-to-end: prompt design and UX on Ask FDE, Jira ticket creation, and weekly update drafting; requirements, testing, and acceptance on meeting matching and spec generation. Each feature came from a bottleneck I hit during 34 manual onboardings, and each AI output keeps a human control: accept, edit, or dismiss.</p>
     </div>
   </section>
 
@@ -47,7 +47,7 @@
   <div class="prose">
     <div class="container-narrow">
       <h2>The throughline</h2>
-      <p>The time lost searching transcripts, the hours writing tickets, the context that died in meeting recordings - these shaped what I built and why. I owned the prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss controls) on the three features below; engineering owned the underlying data-ingestion rails. I was also PM on two more AI features in the platform - meeting matching and spec generation - where I owned requirements and testing while engineering owned the build; this case study covers the three I shipped end-to-end. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
+      <p>The time lost searching transcripts, the hours writing tickets, the context that died in meeting recordings - these shaped what I built and why. I owned all five features end-to-end. On Ask FDE, Jira ticket creation, and weekly update drafting, I owned prompt design and the user-side behavior (when AI fires, how outputs surface, accept/edit/dismiss controls), built on data-ingestion rails engineering put in place. On meeting matching and spec generation, I owned requirements, testing, and acceptance while engineering owned the build. This case study covers all five. Every feature is instrumented in PostHog so adoption is visible, not assumed; Langfuse handles LLM-trace telemetry for production monitoring.</p>
 
       <h2>1 · Ask FDE - RAG-powered workspace Q&amp;A</h2>
       <p>Onboarding analysts run 5–6 back-to-back calls daily across 10–17 concurrent accounts. Between calls, answering "what's blocking this account right now?" used to mean switching between Circleback transcripts, the spec document, and Jira. Ask FDE is a conversational assistant embedded in each workspace, grounded in three sources - the specification, uploaded meeting transcripts, and synced Jira tickets - using a per-workspace semantic search store. Every answer carries source citations so users see exactly which meeting, spec section, or ticket it came from, and it degrades gracefully to spec-only context before meetings are uploaded.</p>
